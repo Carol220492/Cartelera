@@ -113,35 +113,48 @@ main {
   padding: 20px;
 }
 
-#peliculas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  /* Cuadrícula adaptable */
-  gap: 20px;
+#carrusel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden; /* Oculta las películas fuera del área visible */
+}
+
+.carrusel-contenedor {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Animación suave al cambiar de película */
 }
 
 .pelicula {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.pelicula img {
-  width: 100%;
-  display: block;
-}
-
-.pelicula h3 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  margin: 0;
+  min-width: 100%; /* Cada película ocupa el 100% del ancho del carrusel */
   text-align: center;
 }
 
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 10;
+}
+
+#prev {
+  left: 10px; /* Botón izquierdo */
+}
+
+#next {
+  right: 10px; /* Botón derecho */
+}
+
+.carrusel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 .modal {
   display: none;
   position: fixed;

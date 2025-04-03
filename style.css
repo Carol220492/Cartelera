@@ -155,6 +155,77 @@ main {
 .carrusel-btn:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+.btn-mas-info {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-mas-info:hover {
+  background-color: #e64a19;
+}
+
+.indicadores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espacio entre los círculos */
+  margin-top: 15px;
+}
+
+.indicador {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc; /* Color gris para los indicadores inactivos */
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.indicador.activo {
+  background-color: #ff5722; /* Color naranja para el indicador activo */
+}
+
+#scroll-btn-container {
+  display: flex; /* Cambiamos a flexbox para centrar el botón */
+  justify-content: center; /* Centra el botón horizontalmente */
+  align-items: center; /* Asegura que esté alineado verticalmente */
+  margin-top: 10px; /* Espacio entre los indicadores y el botón */
+}
+
+#scroll-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+#scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#scroll-btn::before {
+  content: '⌄'; /* Flecha hacia abajo */
+  font-size: 24px;
+  line-height: 1;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -198,3 +269,4 @@ main {
 #modal-descripcion {
   margin-top: 20px;
 }
+

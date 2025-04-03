@@ -13,6 +13,7 @@ const modalTitulo = document.getElementById('modal-titulo');
 const modalCartel = document.getElementById('modal-cartel');
 const modalDescripcion = document.getElementById('modal-descripcion');
 const cerrarModal = document.querySelector('.cerrar-modal');
+const indicadoresContainer = document.getElementById('indicadores'); // Contenedor de los indicadores
 
 const prevButton = document.getElementById('prev'); // Botón para ir a la película anterior
 const nextButton = document.getElementById('next'); // Botón para ir a la película siguiente
@@ -42,20 +43,35 @@ async function obtenerPeliculas() {
 }
 
 function mostrarPeliculasCarrusel(peliculas) {
-  peliculas.forEach((pelicula) => {
+  peliculas.forEach((pelicula, index) => {
     const elementoPelicula = document.createElement('div');
     elementoPelicula.classList.add('pelicula');
     elementoPelicula.innerHTML = `
       <img src="${pelicula.Poster}" alt="${pelicula.Title}">
       <h3>${pelicula.Title}</h3>
-      <p>${pelicula.Plot}</p>
+      <button class="btn-mas-info">Más información</button>
     `;
 
-    elementoPelicula.addEventListener('click', () => {
+    // Evento para abrir el modal al hacer clic en el botón
+    const botonMasInfo = elementoPelicula.querySelector('.btn-mas-info');
+    botonMasInfo.addEventListener('click', () => {
       mostrarDetallesPelicula(pelicula);
     });
 
     peliculasContainer.appendChild(elementoPelicula);
+
+    // Crear un indicador para cada película
+    const indicador = document.createElement('div');
+    indicador.classList.add('indicador');
+    if (index === 0) indicador.classList.add('activo'); // El primer indicador es activo por defecto
+
+    // Evento para navegar al hacer clic en un indicador
+    indicador.addEventListener('click', () => {
+      indiceActual = index;
+      actualizarCarrusel();
+    });
+
+    indicadoresContainer.appendChild(indicador);
   });
 
   actualizarCarrusel(); // Muestra la primera película
@@ -64,6 +80,16 @@ function mostrarPeliculasCarrusel(peliculas) {
 function actualizarCarrusel() {
   const anchoPelicula = peliculasContainer.children[0].offsetWidth;
   peliculasContainer.style.transform = `translateX(-${indiceActual * anchoPelicula}px)`;
+
+  // Actualizar los indicadores
+  const indicadores = document.querySelectorAll('.indicador');
+  indicadores.forEach((indicador, index) => {
+    if (index === indiceActual) {
+      indicador.classList.add('activo');
+    } else {
+      indicador.classList.remove('activo');
+    }
+  });
 }
 
 // Botón para ir a la película anterior
@@ -93,15 +119,14 @@ function mostrarDetallesPelicula(pelicula) {
     <p><strong>Audios de lenguaje:</strong> ${pelicula.Language}</p>
     <p><strong>Subtítulos:</strong> ${pelicula.Language}</p>
     <p><strong>Advertencias de contenido:</strong> ${pelicula.Rated || 'No disponible'}</p>
-  <p><strong>Resumen:</strong> ${pelicula.Plot || 'Resumen no disponible'}</p> <!-- Resumen de la película -->
-    `;
+    <p><strong>Resumen:</strong> ${pelicula.Plot || 'Resumen no disponible'}</p>
+  `;
   modalPelicula.style.display = 'block';
 
   // Oculta los botones laterales
   prevButton.style.display = 'none';
   nextButton.style.display = 'none';
 }
-
 
 // Evento para cerrar el modal
 cerrarModal.addEventListener('click', () => {
@@ -116,10 +141,20 @@ cerrarModal.addEventListener('click', () => {
 modalPelicula.addEventListener('click', (event) => {
   if (event.target === modalPelicula) {
     modalPelicula.style.display = 'none'; // Oculta el modal si se hace clic fuera del contenido
-   // Muestra los botones laterales nuevamente
-   prevButton.style.display = 'block';
-   nextButton.style.display = 'block';
- }
+
+    // Muestra los botones laterales nuevamente
+    prevButton.style.display = 'block';
+    nextButton.style.display = 'block';
+  }
 });
 
 obtenerPeliculas();
+
+// Selecciona el botón y la segunda sección
+const scrollBtn = document.getElementById('scroll-btn');
+const segundaSeccion = document.getElementById('segunda-seccion');
+
+// Evento para hacer scroll hacia la segunda sección
+scrollBtn.addEventListener('click', () => {
+  segundaSeccion.scrollIntoView({ behavior: 'smooth' }); // Scroll suave
+});

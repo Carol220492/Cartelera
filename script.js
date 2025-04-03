@@ -54,3 +54,9 @@ cerrarModal.addEventListener('click', () => {
 });
 
 obtenerPeliculas();
+
+document.getElementById("lupa").addEventListener("click", function () {
+  const formBuscador = document.getElementById("form-buscador");
+  formBuscador.style.display = "flex"; // Muestra el formulario
+  this.style.display = "none"; // Oculta la lupa
+});

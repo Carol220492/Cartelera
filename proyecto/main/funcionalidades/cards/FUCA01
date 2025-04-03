@@ -1,0 +1,23 @@
+Código US0201
+Titulo: CARDS
+Descripción
+    "COMO" usuario
+    "QUIERO" que al pasar el ratón por encima de la card, sea ligeramente más grande
+            y se despliege un cuadro informativo
+    "PARA" poder ver un resumen de la pelicula
+
+Requisitos:
+    Tiene que tener:
+       
+        titulo
+        fecha 
+        duración
+        Descripción
+        dos botonces de play y info
+[11:25]
+
+por empezar
+
+en progreso
+
+finalizado

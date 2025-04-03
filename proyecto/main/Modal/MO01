@@ -1,0 +1,30 @@
+Código US0201
+Titulo: Modal
+Descripción
+    "COMO" usuario
+    "QUIERO" ver toda la información de la pelicula
+    "PARA" saber más sobre la pelicula
+
+Requisitos:
+    Tiene que tener:
+        Poster lateral izq
+        H2:
+            contenido
+            idioma
+            subtitulo
+            dirección
+            productor
+            personajes
+            estudio
+        dos botones:
+            cerrar en el lateral superior derecho (x)
+            playen el lateral inferior derecho
+
+
+[12:04]
+
+por empezar
+
+en progreso
+
+finalizado

@@ -1,0 +1,19 @@
+Código US0201
+Titulo: Modal
+Descripción
+    "COMO" usuario
+    "QUIERO" tener dos opciones para salir y ver la pelicula
+    "PARA" poder cerrar la pestaña o reproducir la pelicula
+
+Requisitos:
+    Tiene que hacer la siguiente funcionalidad:
+        un botón de cerrar el modal y volver a la pág principal en la sección categoria
+        un botón de reproduccón
+
+[12:12]
+
+por empezar
+
+en progreso
+
+finalizado

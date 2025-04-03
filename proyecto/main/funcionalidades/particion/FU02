@@ -1,0 +1,24 @@
+Código US0201
+Titulo: Main
+Descripción
+    "COMO" usuario
+    "QUIERO" tener botones para deslizarse sobre diferentes opciones, 
+            un botón de información y una de reproduccón
+    "PARA" poder navegar facilmente entre distintas opciones, ver la informacion 
+            y reproducir la pelicula elegida
+
+Requisitos:
+    Tiene que tener:
+        un botón en cada lateral
+        un botón inferior
+        dos botonces en la sección principal
+            botón información
+            botón play
+
+[11:18]
+
+por empezar
+
+en progreso
+
+finalizado

@@ -4,8 +4,8 @@ document.getElementById("lupa").addEventListener("click", function () {
   this.style.display = "none"; // Oculta la lupa
 });
 
-const API_KEY = '9c0255d5'; // Reemplaza con tu clave API
-const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
+const TMDB_API_KEY = '5352ae6d40d8ce0aa806bcec99b733c4'; // Reemplaza con tu clave API de TMDB
+const TMDB_URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${TMDB_API_KEY}&language=es-ES`;
 
 const peliculasContainer = document.getElementById('peliculas');
 const modalPelicula = document.getElementById('modal-pelicula');
@@ -22,23 +22,34 @@ let indiceActual = 0; // Índice de la película actual
 
 async function obtenerPeliculas() {
   try {
-    const peliculas = ['The Alpinist', 'A Minecraft Movie', 'Paddington']; // Lista de películas de ejemplo
-    const datosPeliculas = [];
+    // Llama al endpoint de TMDB para obtener películas populares
+    const respuesta = await fetch(TMDB_URL);
+    const datos = await respuesta.json();
 
-    for (const pelicula of peliculas) {
-      const respuesta = await fetch(`${API_URL}&t=${pelicula}`);
-      const datos = await respuesta.json();
+    if (datos.results && datos.results.length > 0) {
+      // Toma las primeras 3 películas populares
+      const peliculasPopulares = datos.results.slice(0, 3);
 
-      if (datos.Response === 'True') {
-        datosPeliculas.push(datos);
-      } else {
-        console.error('Película no encontrada:', pelicula);
-      }
+      // Convierte los datos de TMDB al formato esperado por mostrarPeliculasCarrusel
+      const peliculasFormateadas = peliculasPopulares.map((pelicula) => ({
+        Title: pelicula.title,
+        Poster: `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`,
+        Plot: pelicula.overview,
+        Year: pelicula.release_date.split('-')[0],
+        Director: 'No disponible', // TMDB no proporciona director directamente en este endpoint
+        Actors: 'No disponible', // TMDB no proporciona actores directamente en este endpoint
+        Runtime: `${pelicula.vote_average} / 10`, // Usamos la calificación como ejemplo
+        Language: pelicula.original_language.toUpperCase(),
+        Rated: 'No disponible', // TMDB no proporciona clasificación directamente
+      }));
+
+      // Muestra las películas en el carrusel
+      mostrarPeliculasCarrusel(peliculasFormateadas);
+    } else {
+      console.error('No se encontraron películas populares.');
     }
-
-    mostrarPeliculasCarrusel(datosPeliculas);
   } catch (error) {
-    console.error('Error al obtener películas:', error);
+    console.error('Error al obtener películas populares:', error);
   }
 }
 

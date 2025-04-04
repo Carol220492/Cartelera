@@ -45,7 +45,7 @@ header img {
   cursor: pointer;
   margin-left: 5px;
   background: none;
-  
+
 }
 
 #lupa {
@@ -113,49 +113,51 @@ main {
   padding: 20px;
 }
 
+/* Ajusta el contenedor del carrusel */
 #carrusel {
   position: relative;
-  width: 100%;
-  max-width: 600px;
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  height: 60vh; /* Altura fija: 60% de la altura de la pantalla */
   margin: 0 auto;
-  overflow: hidden; /* Oculta las películas fuera del área visible */
+  overflow: hidden; /* Oculta cualquier contenido fuera del área visible */
+  background-color: #141414; /* Fondo oscuro */
 }
 
+/* Ajusta el contenedor de las películas */
 .carrusel-contenedor {
   display: flex;
   transition: transform 0.5s ease-in-out; /* Animación suave al cambiar de película */
 }
 
+/* Ajusta el estilo de cada película */
 .pelicula {
   min-width: 100%; /* Cada película ocupa el 100% del ancho del carrusel */
-  text-align: center;
+  height: 100%; /* Ocupa toda la altura del carrusel */
+  position: relative;
+  display: flex; /* Usamos flexbox para centrar el contenido */
+  flex-direction: column; /* Alinea los elementos verticalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+  align-items: center; /* Centra los elementos horizontalmente */
+  text-align: center; /* Centra el texto */
 }
 
-.carrusel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 10;
+/* Ajusta el tamaño del poster */
+.pelicula img {
+  width: 100%; /* Ocupa todo el ancho del carrusel */
+  height: auto; /* Mantiene la proporción de la imagen */
+  object-fit: contain; /* Asegura que la imagen se ajuste completamente sin recortarse */
+  display: block; /* Elimina espacios blancos debajo de la imagen */
+  background-color: #000; /* Fondo negro para rellenar espacios vacíos si los hay */
 }
 
-#prev {
-  left: 10px; /* Botón izquierdo */
+/* Estilo del título de la película */
+.pelicula h3 {
+  font-size: 18px;
+  color: #fff;
+  margin-top: 10px;
 }
 
-#next {
-  right: 10px; /* Botón derecho */
-}
-
-.carrusel-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
+/* Estilo del botón de más información */
 .btn-mas-info {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
@@ -171,33 +173,39 @@ main {
 .btn-mas-info:hover {
   background-color: #e64a19;
 }
-
 .indicadores {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px; /* Espacio entre los círculos */
+  gap: 10px;
+  /* Espacio entre los círculos */
   margin-top: 15px;
 }
 
 .indicador {
   width: 12px;
   height: 12px;
-  background-color: #ccc; /* Color gris para los indicadores inactivos */
+  background-color: #ccc;
+  /* Color gris para los indicadores inactivos */
   border-radius: 50%;
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
 
 .indicador.activo {
-  background-color: #ff5722; /* Color naranja para el indicador activo */
+  background-color: #ff5722;
+  /* Color naranja para el indicador activo */
 }
 
 #scroll-btn-container {
-  display: flex; /* Cambiamos a flexbox para centrar el botón */
-  justify-content: center; /* Centra el botón horizontalmente */
-  align-items: center; /* Asegura que esté alineado verticalmente */
-  margin-top: 10px; /* Espacio entre los indicadores y el botón */
+  display: flex;
+  /* Cambiamos a flexbox para centrar el botón */
+  justify-content: center;
+  /* Centra el botón horizontalmente */
+  align-items: center;
+  /* Asegura que esté alineado verticalmente */
+  margin-top: 10px;
+  /* Espacio entre los indicadores y el botón */
 }
 
 #scroll-btn {
@@ -221,7 +229,8 @@ main {
 }
 
 #scroll-btn::before {
-  content: '⌄'; /* Flecha hacia abajo */
+  content: '⌄';
+  /* Flecha hacia abajo */
   font-size: 24px;
   line-height: 1;
 }
@@ -269,4 +278,3 @@ main {
 #modal-descripcion {
   margin-top: 20px;
 }
-

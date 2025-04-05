@@ -306,3 +306,11 @@ main {
   margin-top: 20px;
 }
 
+.modal-abierto .hero-contenido {
+  visibility: hidden; /* Oculta el contenido de la hero section */
+}
+
+.modal-abierto #indicadores,
+.modal-abierto #scroll-btn-container {
+  display: none; /* Oculta los indicadores y el botón de scroll */
+}

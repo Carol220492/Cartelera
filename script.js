@@ -75,30 +75,100 @@ function cambiarPelicula() {
   cargarHero();
 }
 
+// Función para obtener detalles adicionales de la película
+async function obtenerDetallesPelicula(id) {
+  const detallesURL = `https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&language=es-ES&append_to_response=credits,videos`;
+  try {
+    const respuesta = await fetch(detallesURL);
+    const datos = await respuesta.json();
+
+    // Extraer información relevante
+    const anoEstreno = datos.release_date ? datos.release_date.split("-")[0] : "No disponible";
+    const lenguajes = datos.spoken_languages.map((lang) => lang.name).join(", ") || "No disponible";
+    const reparto = datos.credits.cast.slice(0, 5).map((actor) => actor.name).join(", ") || "No disponible";
+    const director = datos.credits.crew.find((persona) => persona.job === "Director")?.name || "No disponible";
+    const subtitulos = datos.original_language ? datos.original_language.toUpperCase() : "No disponible";
+    const trailer = datos.videos.results.find((video) => video.type === "Trailer")?.key;
+
+    return { anoEstreno, lenguajes, reparto, director, subtitulos, trailer };
+  } catch (error) {
+    console.error("Error al obtener detalles de la película:", error);
+    return {};
+  }
+}
+
 // Función para mostrar los detalles de la película en el modal
-function mostrarDetallesPelicula(pelicula) {
+async function mostrarDetallesPelicula(pelicula) {
   const modalPelicula = document.getElementById("modal-pelicula");
   const modalTitulo = document.getElementById("modal-titulo");
   const modalCartel = document.getElementById("modal-cartel");
   const modalDescripcion = document.getElementById("modal-descripcion");
+  const modalAno = document.getElementById("modal-ano");
+  const modalLenguajes = document.getElementById("modal-lenguajes");
+  const modalReparto = document.getElementById("modal-reparto");
+  const modalDirector = document.getElementById("modal-director");
+  const modalSubtitulos = document.getElementById("modal-subtitulos");
+  const modalTrailer = document.getElementById("modal-trailer");
 
+  // Mostrar información básica
   modalTitulo.textContent = pelicula.titulo;
   modalCartel.src = pelicula.imagen;
   modalCartel.alt = `Cartel de la película: ${pelicula.titulo}`;
   modalDescripcion.textContent = pelicula.descripcion;
 
+  // Obtener detalles adicionales
+  const detalles = await obtenerDetallesPelicula(pelicula.id);
+
+  // Mostrar detalles adicionales
+  modalAno.textContent = detalles.anoEstreno || "No disponible";
+  modalLenguajes.textContent = detalles.lenguajes || "No disponible";
+  modalReparto.textContent = detalles.reparto || "No disponible";
+  modalDirector.textContent = detalles.director || "No disponible";
+  modalSubtitulos.textContent = detalles.subtitulos || "No disponible";
+
+  // Configurar el botón de tráiler
+  if (detalles.trailer) {
+    modalTrailer.style.display = "inline-block";
+    modalTrailer.onclick = () => {
+      window.open(`https://www.youtube.com/watch?v=${detalles.trailer}`, "_blank");
+    };
+  } else {
+    modalTrailer.style.display = "none";
+  }
+
+  // Mostrar el modal
   modalPelicula.style.display = "block";
+
+  // Añadir la clase para ocultar la hero section
+  document.body.classList.add("modal-abierto");
+
+  // Detener el cambio automático de películas
+  clearInterval(intervaloCambio);
 }
 
 // Evento para cerrar el modal
 document.querySelector(".cerrar-modal").addEventListener("click", () => {
-  document.getElementById("modal-pelicula").style.display = "none";
+  const modalPelicula = document.getElementById("modal-pelicula");
+  modalPelicula.style.display = "none";
+
+  // Quitar la clase para mostrar nuevamente la hero section
+  document.body.classList.remove("modal-abierto");
+
+  // Reiniciar el cambio automático de películas
+  intervaloCambio = setInterval(cambiarPelicula, 5000);
 });
 
 // También puedes cerrar el modal haciendo clic fuera del contenido
 document.getElementById("modal-pelicula").addEventListener("click", (event) => {
   if (event.target === document.getElementById("modal-pelicula")) {
-    document.getElementById("modal-pelicula").style.display = "none";
+    const modalPelicula = document.getElementById("modal-pelicula");
+    modalPelicula.style.display = "none";
+
+    // Quitar la clase para mostrar nuevamente la hero section
+    document.body.classList.remove("modal-abierto");
+
+    // Reiniciar el cambio automático de películas
+    intervaloCambio = setInterval(cambiarPelicula, 5000);
   }
 });
 

@@ -275,19 +275,63 @@ main {
 }
 
 .modal-contenido {
-  background-color: #333;
-  margin: 10% auto;
+  display: flex; /* Diseño de flexbox */
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  justify-content: space-between; /* Espacia el póster y el contenido */
+  background-color: transparent; /* Fondo oscuro para el contenido */
+  margin: 5% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border-radius: 10px; /* Bordes redondeados */
   width: 80%;
+  max-width: 900px; /* Limita el ancho máximo */
   position: relative;
+  color: #fff; /* Texto blanco */
+}
+
+#modal-cartel {
+  max-width: 60%; /* El póster ocupa el 40% del ancho */
+  height: auto;
+  border-radius: 10px; /* Bordes redondeados para el póster */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para destacar el póster */
+}
+
+.modal-texto {
+  max-width: 55%; /* El texto ocupa el 55% del ancho */
+  margin-left: 20px; /* Espaciado entre el póster y el texto */
+}
+
+.modal-texto h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.modal-texto p {
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.btn-ver-trailer {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn-ver-trailer:hover {
+  background-color: #b20710;
 }
 
 .cerrar-modal {
-  color: #aaa;
+  color: #fff;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -297,10 +341,6 @@ main {
   margin-top: 0;
 }
 
-#modal-cartel {
-  max-width: 100%;
-  height: auto;
-}
 
 #modal-descripcion {
   margin-top: 20px;

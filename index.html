@@ -25,21 +25,26 @@
   </header>
 
   <main id="main">
-    <div id="carrusel">
-      <button id="prev" class="carrusel-btn">❮</button>
-      <div id="peliculas" class="carrusel-contenedor">
-        <!-- Las películas se generarán dinámicamente aquí -->
+    <div id="hero" class="hero-section">
+      <button id="btn-prev" class="btn-lateral">❮</button>
+      <div class="hero-contenido">
+        <h1 id="hero-titulo">Título de la Película</h1>
+        <p id="hero-descripcion">Descripción breve de la película destacada.</p>
+        <button id="hero-boton" class="btn-ver-mas">Ver más</button>
       </div>
-      <button id="next" class="carrusel-btn">❯</button>
+      <img id="hero-imagen" src="" alt="Imagen de la película destacada">
+      <button id="btn-next" class="btn-lateral">❯</button>
+      <div id="indicadores" class="indicadores">
+        <!-- Los indicadores se generarán dinámicamente aquí -->
+      </div>
+      <div id="scroll-btn-container">
+        <button id="scroll-btn">⌄</button>
+      </div>
     </div>
 
-    <div id="indicadores" class="indicadores">
-      <!-- Los indicadores se generarán dinámicamente aquí -->
-    </div>
+    
 
-    <div id="scroll-btn-container">
-      <button id="scroll-btn"></button> <!-- Flecha hacia abajo -->
-    </div>
+   
 
     <div id="modal-pelicula" class="modal">
       <div class="modal-contenido">

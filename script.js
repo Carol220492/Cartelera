@@ -1,171 +1,175 @@
+// Mostrar el formulario de búsqueda al hacer clic en la lupa
 document.getElementById("lupa").addEventListener("click", function () {
   const formBuscador = document.getElementById("form-buscador");
   formBuscador.style.display = "flex"; // Muestra el formulario
   this.style.display = "none"; // Oculta la lupa
 });
 
+// Clave y URL de la API de TMDB
 const TMDB_API_KEY = '5352ae6d40d8ce0aa806bcec99b733c4'; // Reemplaza con tu clave API de TMDB
 const TMDB_URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${TMDB_API_KEY}&language=es-ES`;
 
-const peliculasContainer = document.getElementById('peliculas');
-const modalPelicula = document.getElementById('modal-pelicula');
-const modalTitulo = document.getElementById('modal-titulo');
-const modalCartel = document.getElementById('modal-cartel');
-const modalDescripcion = document.getElementById('modal-descripcion');
-const cerrarModal = document.querySelector('.cerrar-modal');
-const indicadoresContainer = document.getElementById('indicadores'); // Contenedor de los indicadores
+// Elementos de la hero section
+const heroTitulo = document.getElementById("hero-titulo");
+const heroDescripcion = document.getElementById("hero-descripcion");
+const heroImagen = document.getElementById("hero-imagen");
+const heroBoton = document.getElementById("hero-boton");
 
-const prevButton = document.getElementById('prev'); // Botón para ir a la película anterior
-const nextButton = document.getElementById('next'); // Botón para ir a la película siguiente
+let peliculas = []; // Array para almacenar las películas obtenidas
+let peliculaActual = 0; // Índice de la película actual
+let intervaloCambio; // Variable para el intervalo de cambio automático
 
-let indiceActual = 0; // Índice de la película actual
-
+// Función para obtener las películas desde la API de TMDB
 async function obtenerPeliculas() {
   try {
-    // Llama al endpoint de TMDB para obtener películas populares
     const respuesta = await fetch(TMDB_URL);
     const datos = await respuesta.json();
 
     if (datos.results && datos.results.length > 0) {
-      // Toma las primeras 3 películas populares
-      const peliculasPopulares = datos.results.slice(0, 3);
-
-      // Convierte los datos de TMDB al formato esperado por mostrarPeliculasCarrusel
-      const peliculasFormateadas = peliculasPopulares.map((pelicula) => ({
-        Title: pelicula.title,
-        Poster: `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`,
-        Plot: pelicula.overview,
-        Year: pelicula.release_date.split('-')[0],
-        Director: 'No disponible', // TMDB no proporciona director directamente en este endpoint
-        Actors: 'No disponible', // TMDB no proporciona actores directamente en este endpoint
-        Runtime: `${pelicula.vote_average} / 10`, // Usamos la calificación como ejemplo
-        Language: pelicula.original_language.toUpperCase(),
-        Rated: 'No disponible', // TMDB no proporciona clasificación directamente
+      // Guardar solo las primeras 3 películas obtenidas
+      peliculas = datos.results.slice(0, 3).map((pelicula) => ({
+        titulo: pelicula.title || "Título no disponible",
+        descripcion: pelicula.overview || "Descripción no disponible.",
+        imagen: pelicula.backdrop_path
+          ? `https://image.tmdb.org/t/p/w1280${pelicula.backdrop_path}`
+          : pelicula.poster_path
+          ? `https://image.tmdb.org/t/p/w1280${pelicula.poster_path}`
+          : "/img/placeholder.webp", // Imagen predeterminada si no hay disponible
+        id: pelicula.id,
       }));
 
-      // Muestra las películas en el carrusel
-      mostrarPeliculasCarrusel(peliculasFormateadas);
+      // Generar los indicadores
+      generarIndicadores();
+
+      // Cargar la primera película en la hero section
+      cargarHero();
     } else {
-      console.error('No se encontraron películas populares.');
+      console.error("No se encontraron películas populares.");
     }
   } catch (error) {
-    console.error('Error al obtener películas populares:', error);
+    console.error("Error al obtener películas populares:", error);
   }
 }
 
-function mostrarPeliculasCarrusel(peliculas) {
-  peliculas.forEach((pelicula, index) => {
-    const elementoPelicula = document.createElement('div');
-    elementoPelicula.classList.add('pelicula');
-    elementoPelicula.innerHTML = `
-      <img src="${pelicula.Poster}" alt="${pelicula.Title}">
-      <h3>${pelicula.Title}</h3>
-      <button class="btn-mas-info">Más información</button>
-    `;
+// Función para cargar la película actual en la hero section
+function cargarHero() {
+  if (peliculas.length === 0) return;
 
-    // Evento para abrir el modal al hacer clic en el botón
-    const botonMasInfo = elementoPelicula.querySelector('.btn-mas-info');
-    botonMasInfo.addEventListener('click', () => {
-      mostrarDetallesPelicula(pelicula);
-    });
+  const pelicula = peliculas[peliculaActual];
+  heroTitulo.textContent = pelicula.titulo;
+  heroDescripcion.textContent = pelicula.descripcion;
+  heroImagen.src = pelicula.imagen;
+  heroImagen.alt = `Imagen de la película: ${pelicula.titulo}`;
 
-    peliculasContainer.appendChild(elementoPelicula);
+  // Evento del botón "Ver más" para mostrar detalles de la película
+  heroBoton.onclick = () => {
+    mostrarDetallesPelicula(pelicula);
+  };
 
-    // Crear un indicador para cada película
-    const indicador = document.createElement('div');
-    indicador.classList.add('indicador');
-    if (index === 0) indicador.classList.add('activo'); // El primer indicador es activo por defecto
-
-    // Evento para navegar al hacer clic en un indicador
-    indicador.addEventListener('click', () => {
-      indiceActual = index;
-      actualizarCarrusel();
-    });
-
-    indicadoresContainer.appendChild(indicador);
-  });
-
-  actualizarCarrusel(); // Muestra la primera película
+  actualizarIndicadores(); // Actualiza los indicadores al cargar una película
 }
 
-function actualizarCarrusel() {
-  const anchoPelicula = peliculasContainer.children[0].offsetWidth;
-  peliculasContainer.style.transform = `translateX(-${indiceActual * anchoPelicula}px)`;
-
-  // Actualizar los indicadores
-  const indicadores = document.querySelectorAll('.indicador');
-  indicadores.forEach((indicador, index) => {
-    if (index === indiceActual) {
-      indicador.classList.add('activo');
-    } else {
-      indicador.classList.remove('activo');
-    }
-  });
+// Función para cambiar a la siguiente película automáticamente
+function cambiarPelicula() {
+  peliculaActual = (peliculaActual + 1) % peliculas.length; // Cicla entre las películas
+  cargarHero();
 }
 
-// Botón para ir a la película anterior
-prevButton.addEventListener('click', () => {
-  if (indiceActual > 0) {
-    indiceActual--;
-    actualizarCarrusel();
-  }
-});
-
-// Botón para ir a la película siguiente
-nextButton.addEventListener('click', () => {
-  if (indiceActual < peliculasContainer.children.length - 1) {
-    indiceActual++;
-    actualizarCarrusel();
-  }
-});
-
+// Función para mostrar los detalles de la película en el modal
 function mostrarDetallesPelicula(pelicula) {
-  modalTitulo.textContent = pelicula.Title;
-  modalCartel.src = pelicula.Poster;
-  modalDescripcion.innerHTML = `
-    <p><strong>Año de estreno:</strong> ${pelicula.Year}</p>
-    <p><strong>Director:</strong> ${pelicula.Director}</p>
-    <p><strong>Reparto:</strong> ${pelicula.Actors}</p>
-    <p><strong>Duración:</strong> ${pelicula.Runtime}</p>
-    <p><strong>Audios de lenguaje:</strong> ${pelicula.Language}</p>
-    <p><strong>Subtítulos:</strong> ${pelicula.Language}</p>
-    <p><strong>Advertencias de contenido:</strong> ${pelicula.Rated || 'No disponible'}</p>
-    <p><strong>Resumen:</strong> ${pelicula.Plot || 'Resumen no disponible'}</p>
-  `;
-  modalPelicula.style.display = 'block';
+  const modalPelicula = document.getElementById("modal-pelicula");
+  const modalTitulo = document.getElementById("modal-titulo");
+  const modalCartel = document.getElementById("modal-cartel");
+  const modalDescripcion = document.getElementById("modal-descripcion");
 
-  // Oculta los botones laterales
-  prevButton.style.display = 'none';
-  nextButton.style.display = 'none';
+  modalTitulo.textContent = pelicula.titulo;
+  modalCartel.src = pelicula.imagen;
+  modalCartel.alt = `Cartel de la película: ${pelicula.titulo}`;
+  modalDescripcion.textContent = pelicula.descripcion;
+
+  modalPelicula.style.display = "block";
 }
 
 // Evento para cerrar el modal
-cerrarModal.addEventListener('click', () => {
-  modalPelicula.style.display = 'none'; // Oculta el modal
-
-  // Muestra los botones laterales nuevamente
-  prevButton.style.display = 'block';
-  nextButton.style.display = 'block';
+document.querySelector(".cerrar-modal").addEventListener("click", () => {
+  document.getElementById("modal-pelicula").style.display = "none";
 });
 
 // También puedes cerrar el modal haciendo clic fuera del contenido
-modalPelicula.addEventListener('click', (event) => {
-  if (event.target === modalPelicula) {
-    modalPelicula.style.display = 'none'; // Oculta el modal si se hace clic fuera del contenido
-
-    // Muestra los botones laterales nuevamente
-    prevButton.style.display = 'block';
-    nextButton.style.display = 'block';
+document.getElementById("modal-pelicula").addEventListener("click", (event) => {
+  if (event.target === document.getElementById("modal-pelicula")) {
+    document.getElementById("modal-pelicula").style.display = "none";
   }
 });
 
-obtenerPeliculas();
+// Inicializar la hero section
+document.addEventListener("DOMContentLoaded", () => {
+  obtenerPeliculas();
 
-// Selecciona el botón y la segunda sección
-const scrollBtn = document.getElementById('scroll-btn');
-const segundaSeccion = document.getElementById('segunda-seccion');
+  // Evitar múltiples intervalos
+  if (intervaloCambio) clearInterval(intervaloCambio);
 
-// Evento para hacer scroll hacia la segunda sección
-scrollBtn.addEventListener('click', () => {
-  segundaSeccion.scrollIntoView({ behavior: 'smooth' }); // Scroll suave
+  // Cambiar película automáticamente cada 5 segundos
+  intervaloCambio = setInterval(cambiarPelicula, 5000);
+});
+
+// Botones laterales
+const btnPrev = document.getElementById("btn-prev");
+const btnNext = document.getElementById("btn-next");
+
+// Función para ir a la película anterior
+function peliculaAnterior() {
+  peliculaActual = (peliculaActual - 1 + peliculas.length) % peliculas.length; // Cicla hacia atrás
+  cargarHero();
+}
+
+// Función para ir a la siguiente película
+function peliculaSiguiente() {
+  peliculaActual = (peliculaActual + 1) % peliculas.length; // Cicla hacia adelante
+  cargarHero();
+}
+
+// Eventos para los botones
+btnPrev.addEventListener("click", peliculaAnterior);
+btnNext.addEventListener("click", peliculaSiguiente);
+
+const contenedorIndicadores = document.getElementById("indicadores");
+
+// Función para generar los indicadores dinámicamente
+function generarIndicadores() {
+  contenedorIndicadores.innerHTML = ""; // Limpia los indicadores existentes
+
+  peliculas.forEach((_, index) => {
+    const indicador = document.createElement("div");
+    indicador.classList.add("indicador");
+    if (index === peliculaActual) indicador.classList.add("activo"); // Marca el indicador activo
+
+    // Evento para cambiar a la película seleccionada al hacer clic en el indicador
+    indicador.addEventListener("click", () => {
+      peliculaActual = index;
+      cargarHero();
+      actualizarIndicadores();
+    });
+
+    contenedorIndicadores.appendChild(indicador);
+  });
+}
+
+// Función para actualizar los indicadores
+function actualizarIndicadores() {
+  const indicadores = document.querySelectorAll(".indicador");
+  indicadores.forEach((indicador, index) => {
+    if (index === peliculaActual) {
+      indicador.classList.add("activo");
+    } else {
+      indicador.classList.remove("activo");
+    }
+  });
+}
+
+const scrollBtn = document.getElementById("scroll-btn");
+
+scrollBtn.addEventListener("click", () => {
+  const mainContent = document.querySelector("main");
+  mainContent.scrollIntoView({ behavior: "smooth" }); // Desplazamiento suave hacia el contenido principal
 });

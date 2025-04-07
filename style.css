@@ -1,123 +1,356 @@
-body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: #141414; /* Fondo oscuro tipo Netflix */
-    color: #fff;
-  }
-  
-  header {
-    background-color: #000;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  header h1 {
-    margin: 0;
-  }
-  
-  header nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header nav ul li {
-    margin-left: 20px;
-  }
-  
-  header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
+@media (max-width: 600px) {
   #peliculas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Cuadrícula adaptable */
-    gap: 20px;
+    grid-template-columns: 1fr;
+    /* Una columna en pantallas pequeñas */
   }
-  
-  .pelicula {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  .pelicula img {
-    width: 100%;
-    display: block;
-  }
-  
-  .pelicula h3 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    margin: 0;
-    text-align: center;
-  }
-  
-  footer {
-    background-color: #000;
-    padding: 20px;
-    text-align: center;
-  }
+}
 
-  @media (max-width: 600px) {
-    #peliculas {
-      grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-    }
-  }
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #000;
+  /* Fondo oscuro tipo Netflix */
+  color: #fff;
+}
+
+header {
+  background-color: none; /* Fondo negro semitransparente */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed; /* Fija el header en la parte superior */
+  width: 95%; /* Ocupa todo el ancho */
+  z-index: 10; /* Asegura que esté por encima de otros elementos */
+}
+
+header img {
+  width: 150px; /* Ajusta el tamaño del logo si es necesario */
+  height: auto;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espaciado entre los elementos del lado derecho */
+}
+
+#buscador {
+  flex-grow: 0;
+  /* Evita que el buscador ocupe todo el espacio disponible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  /* Reduce el espacio entre el buscador y el botón */
+}
+
+#buscador #lupa img {
+  width: 25px;
+  height: 34px;
+  cursor: pointer;
+  margin-left: 5px;
+  background: none;
+}
+
+#lupa {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #fff;
+}
+
+#form-buscador {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#form-buscador input {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+  color: #000; /* Texto negro */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+#form-buscador input::placeholder {
+  color: #666; /* Color del texto del placeholder */
+}
+
+#form-buscador button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#form-buscador button:hover {
+  background-color: #e64a19;
+}
+
+.btn-suscripcion {
+  margin-left: 5px;
+  /* Añade un pequeño margen entre el buscador y el botón */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+  color: #000; /* Texto negro */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-suscripcion:hover {
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco sólido al pasar el mouse */
+}
+
+main {
+  padding: 0px;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-contenido {
+  position: absolute;
+  z-index: 2;
+  text-align: left; /* Alinea el texto a la izquierda */
+  left: 50px; /* Ajusta la posición horizontal desde el borde izquierdo */
+  top: 50%; /* Centra verticalmente */
+  transform: translateY(-50%); /* Ajusta el centrado vertical */
+  max-width: 600px;
+}
+
+.hero-contenido h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-contenido p {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-contenido .btn-ver-mas {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-contenido .btn-ver-mas:hover {
+  background-color: #b20710;
+}
+
+#hero-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.btn-lateral {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 3;
+  transition: background-color 0.3s ease;
+}
+
+.btn-lateral:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#btn-prev {
+  left: 10px; /* Botón izquierdo */
+}
+
+#btn-next {
+  right: 10px; /* Botón derecho */
+}
+
+.indicadores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 19px; /* Aumenta el espacio entre los indicadores */
+  position: absolute;
+  bottom: 50px; /* Sube los indicadores ligeramente */
+  width: 100%;
+  z-index: 3;
+}
+
+.indicador {
+  width: 16px; /* Aumenta el tamaño de los indicadores */
+  height: 16px; /* Aumenta el tamaño de los indicadores */
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.indicador.activo {
+  background-color: #ff5722;
+  transform: scale(1.2); /* Agranda el indicador activo ligeramente */
+}
+
+#scroll-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -10px; /* Ajusta la posición para que quede debajo de los indicadores */
+  width: 100%;
+  z-index: 3;
+}
+
+#scroll-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+#scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#scroll-btn::before {
+  content: '⌄'; /* Flecha hacia abajo */
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-contenido {
+  display: flex; /* Diseño de flexbox */
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  justify-content: space-between; /* Espacia el póster y el contenido */
+  background-color: transparent; /* Fondo oscuro para el contenido */
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px; /* Bordes redondeados */
+  width: 80%;
+  max-width: 900px; /* Limita el ancho máximo */
+  position: relative;
+  color: #fff; /* Texto blanco */
+}
+
+#modal-cartel {
+  max-width: 60%; /* El póster ocupa el 40% del ancho */
+  height: auto;
+  border-radius: 10px; /* Bordes redondeados para el póster */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para destacar el póster */
+}
+
+.modal-texto {
+  max-width: 55%; /* El texto ocupa el 55% del ancho */
+  margin-left: 20px; /* Espaciado entre el póster y el texto */
+}
+
+.modal-texto h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.modal-texto p {
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.btn-ver-trailer {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn-ver-trailer:hover {
+  background-color: #b20710;
+}
+
+.cerrar-modal {
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#modal-titulo {
+  margin-top: 0;
+}
 
 
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  .modal-contenido {
-    background-color: #333;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    position: relative;
-  }
-  
-  .cerrar-modal {
-    color: #aaa;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  #modal-titulo {
-    margin-top: 0;
-  }
-  
-  #modal-cartel {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  #modal-descripcion {
-    margin-top: 20px;
-  }
+#modal-descripcion {
+  margin-top: 20px;
+}
+
+.modal-abierto .hero-contenido {
+  visibility: hidden; /* Oculta el contenido de la hero section */
+}
+
+.modal-abierto #indicadores,
+.modal-abierto #scroll-btn-container {
+  display: none; /* Oculta los indicadores y el botón de scroll */
+}

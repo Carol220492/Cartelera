@@ -6,36 +6,63 @@
   <title>Mi Cartelera de Películas</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
-    <h1>Mi Servicio de Streaming</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Películas</a></li>
-        <li><a href="#">Mi Lista</a></li>
-      </ul>
-    </nav>
+    <img src="/img/logo.webp" alt="Nalion Streaming">
+    <div class="header-right">
+      <div id="buscador">
+        <button id="lupa">
+          <img src="/img/lupa.webp" alt="Buscar">
+        </button>
+        <form id="form-buscador" action="#" method="get" style="display: none;">
+          <input type="text" name="query" placeholder="¿Qué buscas?">
+        </form>
+      </div>
+      <button class="btn-suscripcion">SUSCRÍBETE</button>
+    </div>
   </header>
 
   <main id="main">
-    <div id="peliculas">
+    <div id="hero" class="hero-section">
+      <button id="btn-prev" class="btn-lateral">❮</button>
+      <div class="hero-contenido">
+        <h1 id="hero-titulo">Título de la Película</h1>
+        <p id="hero-descripcion">Descripción breve de la película destacada.</p>
+        <button id="hero-boton" class="btn-ver-mas">Ver más</button>
       </div>
+      <img id="hero-imagen" src="" alt="Imagen de la película destacada">
+      <button id="btn-next" class="btn-lateral">❯</button>
+      <div id="indicadores" class="indicadores">
+        <!-- Los indicadores se generarán dinámicamente aquí -->
+      </div>
+      <div id="scroll-btn-container">
+        <button id="scroll-btn">⌄</button>
+      </div>
+    </div>
+
+    
+
+   
 
     <div id="modal-pelicula" class="modal">
       <div class="modal-contenido">
+        <img id="modal-cartel" src="" alt="Cartel de la película">
+        <div class="modal-texto">
+          <h2 id="modal-titulo">Título de la Película</h2>
+          <p id="modal-descripcion">Descripción de la película.</p>
+          <p><strong>Año de estreno:</strong> <span id="modal-ano"></span></p>
+          <p><strong>Lenguajes disponibles:</strong> <span id="modal-lenguajes"></span></p>
+          <p><strong>Reparto:</strong> <span id="modal-reparto"></span></p>
+          <p><strong>Director:</strong> <span id="modal-director"></span></p>
+          <p><strong>Subtítulos:</strong> <span id="modal-subtitulos"></span></p>
+          <button id="modal-trailer" class="btn-ver-trailer">Ver Tráiler</button>
+        </div>
         <span class="cerrar-modal">&times;</span>
-        <h2 id="modal-titulo"></h2>
-        <img id="modal-cartel" src="" alt="">
-        <p id="modal-descripcion"></p>
       </div>
     </div>
   </main>
-
-  <footer>
-    <p>&copy; 2025 Mi Servicio de Streaming</p>
-  </footer>
-
   <script src="script.js"></script>
 </body>
+
 </html>

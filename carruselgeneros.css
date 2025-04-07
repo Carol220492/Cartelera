@@ -56,7 +56,7 @@
  /* Contenedor del cuadro negro */      
       .info {
         opacity: 1;
-        height: 100px;
+        height: 200px;
         padding: 0 10px;
         position: absolute;
         top: 80%; /* Posiciona el cuadro negro justo debajo de la card */
@@ -64,7 +64,7 @@
         width: 100%; /* Asegura que el ancho del contenedor sea igual al de la card */
         background-color: blue; /* Fondo azul */
         color: #ffffff; /* Texto blanco */
-        overflow: hidden; /* Oculta contenido que no cabe */
+        overflow: scroll;
         transition: height 0.5s ease, opacity 0.5s ease, padding 0.5s ease; /* Transición suave */
         box-sizing: border-box; /* Incluye el padding dentro del ancho total */
         border-radius: 8px; /* Bordes redondeados */

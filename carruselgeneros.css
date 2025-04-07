@@ -1,0 +1,168 @@
+.h2carrusel {
+  margin: 0 0 0 10px;
+  text-align: left; 
+  padding: 20px;
+}
+
+.carrusel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    left: 0;
+
+  }
+  
+.carrusel-contenedor {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  position: relative;
+  overflow: visible;
+
+}
+  
+.card {
+    flex: 0 0 18%;
+    margin: 0 10px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: visible;
+    height: 10vW;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 1;
+    z-index: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    
+    &:hover {
+      transform: scale(1.1); /* Aumenta el tamaño al 110% */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+      z-index: 2;
+      border: #ffffff solid 2px; /* Añade un borde blanco */
+      background-color: rgb(129, 129, 5);
+      
+ /* Contenedor del cuadro negro */      
+      .info {
+        opacity: 1;
+        height: 100px;
+        padding: 0 10px;
+        position: absolute;
+        top: 80%; /* Posiciona el cuadro negro justo debajo de la card */
+        left: 0;
+        width: 100%; /* Asegura que el ancho del contenedor sea igual al de la card */
+        background-color: blue; /* Fondo azul */
+        color: #ffffff; /* Texto blanco */
+        overflow: hidden; /* Oculta contenido que no cabe */
+        transition: height 0.5s ease, opacity 0.5s ease, padding 0.5s ease; /* Transición suave */
+        box-sizing: border-box; /* Incluye el padding dentro del ancho total */
+        border-radius: 8px; /* Bordes redondeados */
+      
+        h3 {
+          margin: 10px 0;
+        }
+      
+        p {
+          padding: 0 10px 10px;
+        }
+
+        button .btn-ver-mas{
+          background-color: #ffffff;
+          color: #000000;
+          width: 50px; /*Añadido*/
+          height: 50px;/*Añadido*/
+          border: none;
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 10;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          font-size: 1.5rem;
+          font-weight: bold;
+          transition: transform 0.3s ease;
+        }
+
+        button .btn-agregar{
+          background-color: #ffffff;
+          color: #000000;
+          width: 50px; /*Añadido*/
+          height: 50px;/*Añadido*/
+          border: none;
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 10;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          font-size: 1.5rem;
+          font-weight: bold;
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+  }
+
+
+/*Botones del carrusel*/
+  .carrusel-btn {
+    background-color: #ffffff;
+    color: #000000;
+    width: 50px; /*Añadido*/
+    height: 50px;/*Añadido*/
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+  }
+
+  .carrusel .carrusel-btn:hover {
+    transform: translateY(-50%) scale(1.4);
+}
+  .carrusel-btn:hover {
+    transform: translateY(-50%) scale(1.4);
+}
+
+  .carrusel .carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .carrusel-btn.prev {
+    left: 0px;
+    border-top-right-radius: 50px; /* Redondea la esquina superior izquierda */
+    border-bottom-right-radius: 50px; /* Redondea la esquina inferior izquierda */
+  }
+  
+  .carrusel-btn.next {
+    right: 0px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }

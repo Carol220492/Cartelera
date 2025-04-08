@@ -1,0 +1,111 @@
+@media (max-width: 600px) {
+    /* Ajustes generales */
+    body {
+      font-size: 14px; /* Reduce el tamaño de fuente */
+      padding: 0;
+      margin: 0;
+    }
+  
+    header {
+      flex-direction: column; /* Cambia la disposición a vertical */
+      align-items: center;
+      padding: 10px;
+    }
+  
+    header img {
+      width: 120px; /* Reduce el tamaño del logo */
+    }
+  
+    .header-right {
+      flex-direction: column; /* Alinea los elementos verticalmente */
+      gap: 10px;
+    }
+  
+    /* Hero Section */
+    .hero-section {
+      height: auto; /* Permite que la altura se ajuste automáticamente */
+      padding: 20px;
+    }
+  
+    .hero-contenido {
+      left: 10px; /* Ajusta la posición horizontal */
+      top: auto; /* Permite que el contenido fluya naturalmente */
+      transform: none; /* Elimina el centrado vertical */
+      max-width: 100%; /* Ocupa todo el ancho disponible */
+      text-align: center; /* Centra el texto */
+    }
+  
+    .hero-contenido h1 {
+      font-size: 2rem; /* Reduce el tamaño del título */
+    }
+  
+    .hero-contenido p {
+      font-size: 1rem; /* Reduce el tamaño del texto */
+    }
+  
+    .hero-contenido .btn-ver-mas {
+      font-size: 0.9rem; /* Ajusta el tamaño del botón */
+      padding: 10px 15px;
+    }
+  
+    #hero-imagen {
+      opacity: 0.7; /* Ajusta la opacidad para mayor legibilidad */
+    }
+  
+    /* Indicadores */
+    .indicadores {
+      gap: 10px; /* Reduce el espacio entre los indicadores */
+    }
+  
+    .indicador {
+      width: 12px; /* Reduce el tamaño de los indicadores */
+      height: 12px;
+    }
+  
+    /* Botones laterales */
+    .btn-lateral {
+      font-size: 1.5rem; /* Reduce el tamaño de los botones */
+      padding: 5px;
+    }
+  
+    /* Botón de scroll */
+    #scroll-btn {
+      width: 40px; /* Reduce el tamaño del botón */
+      height: 40px;
+      font-size: 20px;
+    }
+  
+    /* Sección de categorías */
+    .categorias {
+      padding: 10px; /* Reduce el padding */
+    }
+  
+    /* Modales */
+    .modal-contenido {
+      width: 90%; /* Ajusta el ancho del modal */
+      padding: 15px;
+    }
+  
+    #modal-cartel {
+      max-width: 100%; /* Asegura que el póster no se desborde */
+      margin-bottom: 15px; /* Añade espacio debajo del póster */
+    }
+  
+    .modal-texto {
+      margin-left: 0; /* Elimina el margen lateral */
+      text-align: center; /* Centra el texto */
+    }
+  
+    .modal-texto h2 {
+      font-size: 1.5rem; /* Ajusta el tamaño del título */
+    }
+  
+    .modal-texto p {
+      font-size: 0.9rem; /* Ajusta el tamaño del texto */
+    }
+  
+    .btn-ver-trailer {
+      font-size: 0.9rem; /* Ajusta el tamaño del botón */
+      padding: 8px 12px;
+    }
+  }

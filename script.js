@@ -237,11 +237,12 @@ function actualizarIndicadores() {
 }
 
 const scrollBtn = document.getElementById("scroll-btn");
+  const categoriasContainer = document.getElementById("categorias-container");
 
-scrollBtn.addEventListener("click", () => {
-  const mainContent = document.querySelector("main");
-  mainContent.scrollIntoView({ behavior: "smooth" }); // Desplazamiento suave hacia el contenido principal
-});
+  scrollBtn.addEventListener("click", () => {
+    categoriasContainer.scrollIntoView({ behavior: "smooth" }); // Desplazamiento suave hacia la sección
+  });
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

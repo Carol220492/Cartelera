@@ -1,0 +1,141 @@
+/* Estilos generales del carrusel */
+section.categoria, section.carrusel {
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin: 0 0 1rem 1rem;
+    color: #fff;
+  }
+  
+  .peliculas-carrusel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0 2rem;
+    gap: 1rem;
+  }
+  
+  .pelicula-item {
+    flex: 0 0 calc(20% - 1rem); /* 5 por fila */
+    height: 20vw;
+    background-color: #222;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  .pelicula-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Hover: mostrar detalles */
+  .pelicula-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .pelicula-item h3,
+  .pelicula-item .anio,
+  .pelicula-item .descripcion {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: #fff;
+    padding: 0 0.5rem;
+    z-index: 2;
+  }
+  
+  .pelicula-item h3 {
+    bottom: 4.5rem;
+    left: 0;
+    right: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .pelicula-item .anio {
+    bottom: 3rem;
+    left: 0;
+    right: 0;
+    font-size: 0.9rem;
+  }
+  
+  .pelicula-item .descripcion {
+    bottom: 0.5rem;
+    left: 0;
+    right: 0;
+    font-size: 0.85rem;
+    max-height: 3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Mostrar info en hover */
+  .pelicula-item:hover h3,
+  .pelicula-item:hover .anio,
+  .pelicula-item:hover .descripcion {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Botones laterales */
+  .carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #111;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: opacity 0.3s, background 0.3s;
+  }
+  /* Estilo de los botones */
+.info-btn,
+.play-btn  {
+  background-color: rgba(30, 228, 119, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+  .carrusel-btn:hover {
+    opacity: 1;
+    background-color: #333;
+  }
+  
+  .carrusel-btn.prev {
+    left: 0.5rem;
+  }
+  
+  .carrusel-btn.next {
+    right: 0.5rem;
+  }
+  
+  /* Ocultar scroll horizontal nativo */
+  .peliculas-carrusel::-webkit-scrollbar {
+    display: none;
+  }
+  .peliculas-carrusel {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  

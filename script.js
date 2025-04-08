@@ -33,8 +33,8 @@ async function obtenerPeliculas() {
         imagen: pelicula.backdrop_path
           ? `https://image.tmdb.org/t/p/w1280${pelicula.backdrop_path}`
           : pelicula.poster_path
-          ? `https://image.tmdb.org/t/p/w1280${pelicula.poster_path}`
-          : "/img/placeholder.webp", // Imagen predeterminada si no hay disponible
+            ? `https://image.tmdb.org/t/p/w1280${pelicula.poster_path}`
+            : "/img/placeholder.webp", // Imagen predeterminada si no hay disponible
         id: pelicula.id,
       }));
 
@@ -112,7 +112,7 @@ async function mostrarDetallesPelicula(pelicula) {
 
   // Mostrar información básica
   modalTitulo.textContent = pelicula.titulo;
-  modalCartel.src = pelicula.imagen;
+  modalCartel.src = pelicula.imagen || "/img/placeholder.webp";
   modalCartel.alt = `Cartel de la película: ${pelicula.titulo}`;
   modalDescripcion.textContent = pelicula.descripcion;
 
@@ -147,15 +147,14 @@ async function mostrarDetallesPelicula(pelicula) {
 }
 
 // Evento para cerrar el modal
-document.querySelector(".cerrar-modal").addEventListener("click", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const modalPelicula = document.getElementById("modal-pelicula");
-  modalPelicula.style.display = "none";
+  const cerrarModal = modalPelicula.querySelector(".cerrar-modal");
 
-  // Quitar la clase para mostrar nuevamente la hero section
-  document.body.classList.remove("modal-abierto");
-
-  // Reiniciar el cambio automático de películas
-  intervaloCambio = setInterval(cambiarPelicula, 5000);
+  cerrarModal.addEventListener("click", () => {
+    modalPelicula.style.display = "none"; // Cierra el modal
+    document.body.classList.remove("modal-abierto"); // Restaura la hero section si estaba oculta
+  });
 });
 
 // También puedes cerrar el modal haciendo clic fuera del contenido
@@ -242,4 +241,117 @@ const scrollBtn = document.getElementById("scroll-btn");
 scrollBtn.addEventListener("click", () => {
   const mainContent = document.querySelector("main");
   mainContent.scrollIntoView({ behavior: "smooth" }); // Desplazamiento suave hacia el contenido principal
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const formBuscador = document.getElementById('form-buscador');
+  const inputBuscador = formBuscador.querySelector('input');
+  const modalBusqueda = document.getElementById('modal-busqueda');
+  const cerrarModalBusqueda = document.getElementById('cerrar-modal-busqueda');
+  const contenedorResultados = document.getElementById('resultados-busqueda');
+
+  // Evento para manejar el formulario de búsqueda
+  formBuscador.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Evita que la página se recargue
+    const query = inputBuscador.value.trim();
+
+    if (query) {
+      console.log(`Buscando película: ${query}`);
+      try {
+        // Realizar la búsqueda en la API de TMDB
+        const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&language=es-ES&query=${encodeURIComponent(query)}`;
+        const respuesta = await fetch(searchURL);
+        const datos = await respuesta.json();
+
+        if (datos.results && datos.results.length > 0) {
+          mostrarResultadosBusqueda(datos.results);
+          abrirModalBusqueda();
+        } else {
+          alert('No se encontraron resultados para tu búsqueda.');
+        }
+      } catch (error) {
+        console.error('Error al buscar películas:', error);
+        alert('Ocurrió un error al realizar la búsqueda. Inténtalo nuevamente.');
+      }
+    } else {
+      alert('Por favor, ingresa el nombre de una película.');
+    }
+  });
+
+  // Función para mostrar los resultados de la búsqueda
+  function mostrarResultadosBusqueda(resultados) {
+    contenedorResultados.innerHTML = ''; // Limpia los resultados anteriores
+
+    resultados.forEach((pelicula) => {
+      const imagen = pelicula.poster_path
+      ? `https://image.tmdb.org/t/p/w200${pelicula.poster_path}`
+      : pelicula.backdrop_path
+      ? `https://image.tmdb.org/t/p/w200${pelicula.backdrop_path}`
+      : '/img/placeholder.webp'; // Imagen predeterminada si no hay disponible
+
+      const elemento = document.createElement('div');
+      elemento.classList.add('resultado-item');
+      elemento.innerHTML = `
+        <img src="${imagen}" alt="${pelicula.title}">
+        <h3>${pelicula.title}</h3>
+        <p>${pelicula.overview || 'Sin descripción disponible.'}</p>
+      `;
+
+      // Añadir evento de clic para mostrar detalles de la película
+      elemento.addEventListener('click', () => {
+        mostrarDetallesPelicula({
+          id: pelicula.id,
+          titulo: pelicula.title || 'Título no disponible',
+          descripcion: pelicula.overview || 'Descripción no disponible.',
+          imagen: imagen, // Pasar la imagen validada
+        });
+        modalBusqueda.style.display = 'none'; // Cierra el modal de búsqueda
+      });
+
+      contenedorResultados.appendChild(elemento);
+    });
+  }
+
+  // Función para abrir el modal de búsqueda
+  function abrirModalBusqueda() {
+    modalBusqueda.style.display = 'block';
+  }
+
+  // Función para cerrar el modal de búsqueda
+  cerrarModalBusqueda.addEventListener('click', () => {
+    modalBusqueda.style.display = 'none';
+  });
+
+  // Cerrar el modal al hacer clic fuera del contenido
+  modalBusqueda.addEventListener('click', (event) => {
+    if (event.target === modalBusqueda) {
+      modalBusqueda.style.display = 'none';
+    }
+  });
+});
+
+document.getElementById("volver-buscador").addEventListener("click", () => {
+  const modalPelicula = document.getElementById("modal-pelicula");
+  const modalBusqueda = document.getElementById("modal-busqueda");
+
+  // Cierra el modal de detalles
+  modalPelicula.style.display = "none";
+
+  // Reabre el modal del buscador
+  modalBusqueda.style.display = "block";
+
+  // Quitar la clase para mostrar nuevamente la hero section
+  document.body.classList.remove("modal-abierto");
+});
+
+document.getElementById("volver-buscador").addEventListener("click", () => {
+  const modalPelicula = document.getElementById("modal-pelicula");
+  const modalBusqueda = document.getElementById("modal-busqueda");
+
+  // Cierra el modal de detalles
+  modalPelicula.style.display = "none";
+
+  // Reabre el modal del buscador
+  modalBusqueda.style.display = "block";
 });

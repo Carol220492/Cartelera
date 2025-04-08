@@ -488,3 +488,55 @@
 .btn-volver:hover {
   background-color: #e64a19;
 }
+
+/* Modal para la suscripción */
+#modal-suscripcion {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+}
+
+#modal-suscripcion .modal-contenido {
+  background-color: #141414;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  color: #fff;
+}
+
+#modal-suscripcion h2 {
+  text-align: center;
+}
+
+#modal-suscripcion form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#modal-suscripcion input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#modal-suscripcion .btn-suscripcion {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#modal-suscripcion .btn-suscripcion:hover {
+  background-color: #e64a19;
+}

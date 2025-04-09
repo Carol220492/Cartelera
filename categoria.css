@@ -111,9 +111,6 @@ section.categoria, section.carrusel {
     opacity: 0.8;
   }
   
-
-}
-  
   /* Ocultar scroll horizontal nativo */
   .peliculas-carrusel::-webkit-scrollbar {
     display: none;

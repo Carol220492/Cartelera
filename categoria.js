@@ -27,9 +27,17 @@ async function cargarPeliculasPorGenero(nombreGenero, idGenero) {
       div.classList.add('pelicula-item');
       div.innerHTML = `
         <img src="${pelicula.poster_path ? IMAGE_BASE + pelicula.poster_path : '/img/placeholder.webp'}" alt="${pelicula.title}">
-        <h3>${pelicula.title}</h3>
-        <p class="anio">${pelicula.release_date ? pelicula.release_date.slice(0, 4) : 'Sin año'}</p>
-        <p class="descripcion">${pelicula.overview || 'Sin descripción.'}</p>
+     <!-- Botones de Play y Ver más -->
+    <div class="informacion-deslizable">
+      <div class="botones-card">
+        <button class="btn-play">▶</button>
+        <button class="btn-ver-mas">+</button>
+      </div>
+      <h3>${pelicula.title}</h3>
+      <p class="anio">${pelicula.release_date ? pelicula.release_date.slice(0, 4) : 'Sin año'}</p>
+      <p class="descripcion">${pelicula.overview || 'Sin descripción.'}</p>
+    </div>
+
 
   
 
@@ -45,7 +53,7 @@ async function cargarPeliculasPorGenero(nombreGenero, idGenero) {
 // Función para crear las secciones dinámicamente
 function crearSecciones() {
   const contenedorCategorias = document.getElementById('categorias-container');
-  
+
   // Generar las secciones de cada género
   for (const [nombre, id] of Object.entries(generos)) {
     const seccion = document.createElement('section');

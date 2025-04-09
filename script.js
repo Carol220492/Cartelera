@@ -243,3 +243,51 @@ scrollBtn.addEventListener("click", () => {
   const mainContent = document.querySelector("main");
   mainContent.scrollIntoView({ behavior: "smooth" }); // Desplazamiento suave hacia el contenido principal
 });
+
+
+// Funcion para que al hacer click en el boton de la flecha hacia abajo, el usuario haga scroll hacia abajo
+document.getElementById("scroll-btn").addEventListener("click", function () {
+  const mainSection = document.querySelector("main"); // Selecciona la sección <main>
+  mainSection.scrollIntoView({ behavior: "smooth", block: "end" }); // Desplazamiento suave hacia el final
+});
+
+// Función para que el boton de la flecha hacia abajo desaparezca si el usuario hace scroll hacia abajo
+document.addEventListener("scroll", function () {
+  const scrollBtn = document.getElementById("scroll-btn");
+  if (window.scrollY > 50) { // Si el usuario ha hecho scroll hacia abajo
+      scrollBtn.style.display = "none"; // Ocultar el botón
+  } else {
+      scrollBtn.style.display = "flex"; // Mostrar el botón si vuelve al inicio
+  }
+});
+
+// Seleccionar el botón de desplazamiento hacia arriba y el marcador al final de <main>
+const scrollUpBtn = document.getElementById("scroll-up-btn");
+const mainEndMarker = document.getElementById("main-end-marker");
+
+// Crear un IntersectionObserver para detectar si el marcador está visible
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Mostrar el botón si el marcador está visible (parte inferior de <main>)
+        scrollUpBtn.style.display = "flex";
+      } else {
+        // Ocultar el botón si el marcador no está visible
+        scrollUpBtn.style.display = "none";
+      }
+    });
+  },
+  {
+    root: null, // Usa el viewport como área de observación
+    threshold: 0.1, // Detecta cuando al menos el 10% del marcador es visible
+  }
+);
+
+// Observar el marcador al final de <main>
+observer.observe(mainEndMarker);
+
+// Desplazarse hacia arriba al hacer clic en el botón
+scrollUpBtn.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" }); // Desplazamiento suave hacia la parte superior
+});

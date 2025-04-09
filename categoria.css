@@ -12,10 +12,11 @@ section.categoria, section.carrusel {
   
   .peliculas-carrusel {
     display: flex;
-    overflow-x: auto;
+    overflow-x: visible;
     scroll-behavior: smooth;
     padding: 0 2rem;
     gap: 1rem;
+    box-shadow: #000000;
   }
   
   .pelicula-item {
@@ -90,45 +91,28 @@ section.categoria, section.carrusel {
   
   /* Botones laterales */
   .carrusel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #111;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
+    width: 50px; /*Añadido*/
+    height: 50px;/*Añadido*/
     border: none;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    z-index: 10;
     cursor: pointer;
-    border-radius: 50%;
-    opacity: 0.7;
-    transition: opacity 0.3s, background 0.3s;
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
   }
-  /* Estilo de los botones */
-.info-btn,
-.play-btn  {
-  background-color: rgba(30, 228, 119, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
+  
+
 }
-
-
-  .carrusel-btn:hover {
-    opacity: 1;
-    background-color: #333;
-  }
-  
-  .carrusel-btn.prev {
-    left: 0.5rem;
-  }
-  
-  .carrusel-btn.next {
-    right: 0.5rem;
-  }
   
   /* Ocultar scroll horizontal nativo */
   .peliculas-carrusel::-webkit-scrollbar {
@@ -138,4 +122,28 @@ section.categoria, section.carrusel {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Estilo para los botones de la información */
+.botones-card {
+  position: absolute;
+  top: 60%;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.btn-play, .btn-ver-mas {
+  background-color:rgba(255, 255, 255, 0.8);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.btn-play:hover, .btn-ver-mas:hover {
+  background-color: rgb(255, 255, 255);
+}
   

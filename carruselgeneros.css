@@ -147,6 +147,7 @@
 }
   .carrusel-btn:hover {
     transform: translateY(-50%) scale(1.4);
+    opacity: 1;
 }
 
   .carrusel .carrusel-btn {

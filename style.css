@@ -201,6 +201,8 @@
     color: #000000;
     transform: translateY(-50%) scale(1.2);
     opacity: 0.8;
+    margin-top: 2vw;
+    font-weight: 500;
   }
   
   .hero-contenido .btn-ver-mas:hover {
@@ -209,7 +211,7 @@
   }
   
   #hero-imagen {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -262,9 +264,9 @@
     justify-content: center;
     align-items: center;
     gap: 19px; /* Aumenta el espacio entre los indicadores */
-    position: relative;
-    bottom: -42%; /* Sube los indicadores ligeramente */
-    left: -45.2%;
+    position: absolute;
+    bottom: 7%; /* Sube los indicadores ligeramente */
+    left: 50%;
     z-index: 3;
   }
   
@@ -368,7 +370,7 @@
   .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 11;
     left: 0;
     top: 0;
     width: 100%;

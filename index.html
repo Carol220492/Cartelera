@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="carruselgeneros.css">
   <link rel="stylesheet" href="categoria.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="mobile.css">
 </head>
 
 <body>
@@ -22,6 +23,13 @@
         <form id="form-buscador" action="#" method="get" style="display: none;">
           <input type="text" name="query" placeholder="¿Qué buscas?">
         </form>
+        <div id="modal-busqueda" class="modal">
+          <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-modal-busqueda">&times;</span>
+            <h2>Resultados de la búsqueda</h2>
+            <div id="resultados-busqueda" class="resultados-busqueda"></div>
+          </div>
+        </div>
       </div>
       <button class="btn-suscripcion">SUSCRÍBETE</button>
     </div>
@@ -61,8 +69,21 @@
           <p><strong>Director:</strong> <span id="modal-director"></span></p>
           <p><strong>Subtítulos:</strong> <span id="modal-subtitulos"></span></p>
           <button id="modal-trailer" class="btn-ver-trailer">Ver Tráiler</button>
+          <button id="volver-buscador" class="btn-volver">Buscador</button>
         </div>
-        <span class="cerrar-modal">&times;</span>
+        <button class="cerrar-modal">&times;</button>
+      </div>
+    </div>
+
+    <div id="modal-suscripcion" class="modal">
+      <div class="modal-contenido">
+        <span class="cerrar-modal" id="cerrar-modal-suscripcion">&times;</span>
+        <h2>Suscríbete</h2>
+        <form id="form-suscripcion">
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" placeholder="Ingresa tu correo" required>
+          <button type="submit" class="btn-suscripcion">Enviar</button>
+        </form>
       </div>
     </div>
     <div id="main-end-marker"></div>
@@ -72,7 +93,7 @@
   
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <script src="carruselgeneros.js"></script>
   <script src="categoria.js"></script>
 </body>

@@ -97,6 +97,8 @@ function abrirModal(pelicula) {
   document.getElementById('modal-director').textContent = 'Cargando...'; // opcional
   document.getElementById('modal-subtitulos').textContent = 'Español, Inglés';
 
+
+ 
   // Agregar el evento del botón "Ver tráiler" dentro del modal
   const btnTrailer = document.getElementById('modal-trailer');
   btnTrailer.onclick = function() {

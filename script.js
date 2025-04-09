@@ -110,6 +110,11 @@ async function mostrarDetallesPelicula(pelicula) {
   const modalSubtitulos = document.getElementById("modal-subtitulos");
   const modalTrailer = document.getElementById("modal-trailer");
 
+  const fondoImagen = modalPelicula.querySelector(".fondo-imagen");
+  fondoImagen.style.backgroundImage = `url('${pelicula.imagen}')`;
+
+
+
   // Mostrar información básica
   modalTitulo.textContent = pelicula.titulo;
   modalCartel.src = pelicula.imagen || "/img/placeholder.webp";

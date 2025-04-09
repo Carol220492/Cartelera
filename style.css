@@ -364,34 +364,6 @@
   background: transparent; /* Invisible */
 }
   
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 11;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  .modal-contenido {
-    display: flex; /* Diseño de flexbox */
-    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
-    justify-content: space-between; /* Espacia el póster y el contenido */
-    background-color: transparent; /* Fondo oscuro para el contenido */
-    margin: 5% auto;
-    padding: 20px;
-    border-radius: 10px; /* Bordes redondeados */
-    width: 80%;
-    max-width: 900px; /* Limita el ancho máximo */
-    position: relative;
-    color: #fff; /* Texto blanco */
-    
-  }
-  
   #modal-cartel {
     max-width: 60%; /* El póster ocupa el 40% del ancho */
     height: auto;
@@ -605,4 +577,44 @@
 
 #modal-suscripcion .btn-suscripcion:hover {
   background-color: #e64a19;
+}
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro */
+}
+
+.fondo-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  opacity: 0.1; /* Baja opacidad */
+}
+
+.modal-contenido {
+  display: flex;
+  justify-content: flex-start; /* Alinea la imagen a la izquierda */
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 900px;
+  color: white;
+  text-align: left;
 }

@@ -100,14 +100,6 @@
     margin-left: 5px;
     background: none;
   }
-  
-  /*#lupa {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    color: #fff;
-  }*/
 
   #lupa {
     background: none; /* Sin fondo */
@@ -161,8 +153,7 @@
   }
   
   .btn-suscripcion {
-    margin-left: 5px;
-    /* Añade un pequeño margen entre el buscador y el botón */
+    margin-left: 5px; /* Añade un pequeño margen entre el buscador y el botón */
     background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
     color: #000; /* Texto negro */
     border: none;

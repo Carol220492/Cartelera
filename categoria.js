@@ -37,11 +37,6 @@ async function cargarPeliculasPorGenero(nombreGenero, idGenero) {
       <p class="anio">${pelicula.release_date ? pelicula.release_date.slice(0, 4) : 'Sin año'}</p>
       <p class="descripcion">${pelicula.overview || 'Sin descripción.'}</p>
     </div>
-
-
-  
-
-
       `;
       contenedor.appendChild(div);
     });

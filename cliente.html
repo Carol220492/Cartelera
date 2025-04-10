@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cartelera - Zona de Cliente</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cliente.css">
+</head>
+
+<body>
+  <header>
+    <img src="/img/logo.webp" alt="Mi Cartelera">
+    <div class="header-right">
+      <button id="btn-login" class="btn">Iniciar Sesión</button>
+      <button id="btn-logout" class="btn" style="display: none;">Cerrar Sesión</button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="hero">
+      <h1>Bienvenido a Mi Cartelera</h1>
+      <p>Explora las mejores películas y series.</p>
+    </section>
+  </main>
+
+  <section id="zona-cliente" style="display: none;">
+    <h2>Zona de Cliente</h2>
+    <div id="perfil">
+      <h3>Tu Perfil</h3>
+      <p><strong>Correo:</strong> <span id="cliente-email"></span></p>
+    </div>
+    <div id="favoritos">
+      <h3>Películas Favoritas</h3>
+      <ul id="lista-favoritos"></ul>
+    </div>
+    <div id="recomendaciones">
+      <h3>Recomendaciones</h3>
+      <ul id="lista-recomendaciones"></ul>
+    </div>
+    <div id="continuar-viendo">
+      <h3>Continuar Viendo</h3>
+      <ul id="lista-continuar-viendo"></ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Mi Cartelera</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+
+</html>

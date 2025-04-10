@@ -1,3 +1,4 @@
+
 // Mostrar el formulario de búsqueda al hacer clic en la lupa
 document.getElementById("lupa").addEventListener("click", function () {
   const formBuscador = document.getElementById("form-buscador");
@@ -397,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Funcion para que al hacer click en el boton de la flecha hacia abajo, el usuario haga scroll hacia abajo
 document.getElementById("scroll-btn").addEventListener("click", function () {
   const mainSection = document.querySelector("main"); // Selecciona la sección <main>
-  mainSection.scrollIntoView({ behavior: "smooth", block: "end" }); // Desplazamiento suave hacia el final
+  mainSection.scrollIntoView({ behavior: "smooth", block: "middle" }); // Desplazamiento suave hacia el final
 });
 
 // Función para que el boton de la flecha hacia abajo desaparezca si el usuario hace scroll hacia abajo
@@ -440,3 +441,4 @@ observer.observe(mainEndMarker);
 scrollUpBtn.addEventListener("click", function () {
   window.scrollTo({ top: 0, behavior: "smooth" }); // Desplazamiento suave hacia la parte superior
 });
+

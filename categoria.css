@@ -23,7 +23,7 @@ h2 {
 .pelicula-item {
   flex: 0 0 calc(20% - 1rem);
   /* 5 por fila */
-  height: 20vw;
+  height: 16vw;
   background-color: #222;
   border-radius: 15px;
   overflow: hidden;
@@ -39,11 +39,6 @@ h2 {
   object-fit: cover;
   display: block;
   transition: opacity 0.3s ease-in-out;
-}
-
-/* Hover: mostrar detalles */
-.pelicula-item:hover {
-  transform: scale(1.05);
 }
 
 .pelicula-item h3,
@@ -94,17 +89,16 @@ h2 {
   opacity: 1;
 }
 
-/* Botones laterales */
+/*Botones del carrusel*/
 .carrusel-btn {
   background-color: #ffffff;
-  width: 50px;
-  /*Añadido*/
-  height: 50px;
-  /*Añadido*/
+  color: #000000;
+  width: 50px; /*Añadido*/
+  height: 50px;/*Añadido*/
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 55%;
+  top: 50%;
   transform: translateY(-50%);
   z-index: 10;
   display: flex;
@@ -114,7 +108,32 @@ h2 {
   font-size: 1.5rem;
   font-weight: bold;
   transition: transform 0.3s ease;
-  opacity: 0.8;
+}
+
+.carrusel .carrusel-btn:hover {
+  transform: translateY(-50%) scale(1.4);
+}
+.carrusel-btn:hover {
+  transform: translateY(-50%) scale(1.4);
+  opacity: 1;
+}
+
+.carrusel .carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carrusel-btn.prev {
+  left: 0px;
+  border-top-right-radius: 50px; /* Redondea la esquina superior izquierda */
+  border-bottom-right-radius: 50px; /* Redondea la esquina inferior izquierda */
+}
+
+.carrusel-btn.next {
+  right: 0px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
 /* Ocultar scroll horizontal nativo */

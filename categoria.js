@@ -88,6 +88,12 @@ async function abrirPelicula(peliculaId, nombrePelicula) {
 // Función para abrir el modal con detalles de la película
 function abrirModal(pelicula) {
   const modal = document.getElementById('modal-pelicula');
+
+  const fondoImagen = modal.querySelector('.fondo-imagen');
+  const IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';  // Base URL para las imágenes
+  const imagenFondo = pelicula.backdrop_path ? `${IMAGE_BASE}${pelicula.backdrop_path}` : '/img/placeholder.webp';
+  fondoImagen.style.backgroundImage = `url('${imagenFondo}')`; // Establece el fondo de la película
+
   document.getElementById('modal-cartel').src = pelicula.poster_path ? IMAGE_BASE + pelicula.poster_path : '/img/placeholder.webp';
   document.getElementById('modal-titulo').textContent = pelicula.title;
   document.getElementById('modal-descripcion').textContent = pelicula.overview || 'Sin descripción.';
@@ -97,7 +103,7 @@ function abrirModal(pelicula) {
   document.getElementById('modal-director').textContent = 'Cargando...'; // opcional
   document.getElementById('modal-subtitulos').textContent = 'Español, Inglés';
 
-
+  
  
   // Agregar el evento del botón "Ver tráiler" dentro del modal
   const btnTrailer = document.getElementById('modal-trailer');

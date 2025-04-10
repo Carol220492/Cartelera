@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="categoria.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="suscripcion.css">
+  <link rel="stylesheet" href="login.css">
+
 </head>
 
 <body>
@@ -31,8 +34,10 @@
           </div>
         </div>
       </div>
-      <button class="btn-suscripcion">SUSCRÍBETE</button>
+      <button id="btn-suscripcion" class="btn-suscripcion">SUSCRÍBETE</button>
+      <button id="btn-login" class="btn-suscripcion">Iniciar Sesión</button>
     </div>
+
   </header>
 
   <main id="main">
@@ -85,7 +90,23 @@
         <form id="form-suscripcion">
           <label for="email">Correo electrónico:</label>
           <input type="email" id="email" name="email" placeholder="Ingresa tu correo" required>
+          <label for="password-suscripcion">Crea una contraseña:</label>
+          <input type="password" id="password-suscripcion" name="password" placeholder="Crea una contraseña" required>
           <button type="submit" class="btn-suscripcion">Enviar</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="modal-login" class="modal">
+      <div class="modal-contenido">
+        <span class="cerrar-modal" id="cerrar-modal-login">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="form-login">
+          <label for="login-email">Correo electrónico:</label>
+          <input type="email" id="login-email" name="email" placeholder="Ingresa tu correo" required>
+          <label for="login-password">Contraseña:</label>
+          <input type="password" id="login-password" name="password" placeholder="Ingresa tu contraseña" required>
+          <button type="submit" class="btn-suscripcion">Iniciar Sesión</button>
         </form>
       </div>
     </div>
@@ -93,11 +114,15 @@
   </main>
 
   <button id="scroll-up-btn">^</button>
-  
+
   </footer>
 
   <script src="script.js" defer></script>
-  <script src="categoria.js"></script>
+  <script src="carruselgeneros.js" defer></script>
+  <script src="categoria.js" defer></script>
+  <script src="cliente.js" defer></script>
+  <script src="suscripcion.js" defer></script>
+  <script src="login.js" defer></script>
 </body>
 
 </html>

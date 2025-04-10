@@ -368,37 +368,6 @@ document.getElementById("volver-buscador").addEventListener("click", () => {
   modalBusqueda.style.display = "block";
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const btnSuscripcion = document.querySelector('.btn-suscripcion');
-  const modalSuscripcion = document.getElementById('modal-suscripcion');
-  const cerrarModalSuscripcion = document.getElementById('cerrar-modal-suscripcion');
-  const formSuscripcion = document.getElementById('form-suscripcion');
-
-  // Abrir el modal de suscripción
-  btnSuscripcion.addEventListener('click', () => {
-    modalSuscripcion.style.display = 'block';
-  });
-
-  // Cerrar el modal de suscripción
-  cerrarModalSuscripcion.addEventListener('click', () => {
-    modalSuscripcion.style.display = 'none';
-  });
-
-  // Cerrar el modal al hacer clic fuera del contenido
-  modalSuscripcion.addEventListener('click', (event) => {
-    if (event.target === modalSuscripcion) {
-      modalSuscripcion.style.display = 'none';
-    }
-  });
-
-  // Manejar el envío del formulario
-  formSuscripcion.addEventListener('submit', (event) => {
-    event.preventDefault(); // Evita el envío por defecto
-    const email = document.getElementById('email').value;
-    alert(`Gracias por suscribirte, revise su bandeja de entrada en ${email}`);
-    modalSuscripcion.style.display = 'none'; // Cierra el modal
-  });
-});
 
 // Funcion para que al hacer click en el boton de la flecha hacia abajo, el usuario haga scroll hacia abajo
 document.getElementById("scroll-btn").addEventListener("click", function () {

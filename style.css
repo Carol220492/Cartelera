@@ -298,7 +298,7 @@
     align-items: center;
     gap: 19px; /* Aumenta el espacio entre los indicadores */
     position: absolute;
-    bottom: 7%; /* Sube los indicadores ligeramente */
+    bottom: 9%; /* Sube los indicadores ligeramente */
     left: 50%;
     z-index: 3;
   }

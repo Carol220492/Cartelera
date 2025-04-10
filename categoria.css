@@ -23,7 +23,7 @@ h2 {
 .pelicula-item {
   flex: 0 0 calc(20% - 1rem);
   /* 5 por fila */
-  height: 16vw;
+  height: 28vw;
   background-color: #222;
   border-radius: 15px;
   overflow: hidden;
@@ -151,7 +151,7 @@ h2 {
   bottom: -100%;
   left: 0;
   width: 100%;
-  height: 50%;
+  height: 30%;
   /* Ocupa toda la tarjeta */
   background: rgba(0, 0, 0, 0.8);
   color: white;

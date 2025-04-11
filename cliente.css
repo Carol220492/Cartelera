@@ -1,65 +1,10 @@
-@media (max-width: 600px) {
-  html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-  }
-  body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      overflow-x: hidden;
-      background-color: #141414; /* Fondo oscuro tipo Netflix */
-      color: #fff;
-    }
-    
-    header {
-      background-color: #000;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    header h1 {
-      margin: 0;
-    }
-    
-    header nav ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-    }
-    
-    header nav ul li {
-      margin-left: 20px;
-    }
-    
-    header nav ul li a {
-      color: #fff;
-      text-decoration: none;
-    }
-    
-    main {
-      padding: 0px;
-    }
-    
-    #peliculas {
-      grid-template-columns: 1fr;
-      /* Una columna en pantallas pequeñas */
-    }
-  }
-  
-  body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: #000;
-    /* Fondo oscuro tipo Netflix */
-    color: #fff;
-  }
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #000;
+  /* Fondo oscuro tipo Netflix */
+  color: #fff;
+}
   
   header {
     background-color: none; /* Fondo negro semitransparente */
@@ -100,23 +45,14 @@
     margin-left: 5px;
     background: none;
   }
-
+  
   #lupa {
-    background: none; /* Sin fondo */
-    border: none; /* Sin bordes */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    font-size: 1.5rem; /* Tamaño del icono */
-    color: #ffffff; /* Color del icono */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, color 0.3s ease; /* Transición suave */
-}
-
-#lupa:hover {
-    color: #ffffff; /* Cambia el color al pasar el ratón (rojo Netflix) */
-    transform: scale(1.2); /* Agranda el icono ligeramente */
-}
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #fff;
+  }
   
   #form-buscador {
     display: flex;
@@ -151,9 +87,11 @@
   #form-buscador button:hover {
     background-color: #e64a19;
   }
-  
-  .btn-suscripcion {
-    margin-left: 5px; /* Añade un pequeño margen entre el buscador y el botón */
+
+
+  .btn{
+    margin-left: 5px;
+    /* Añade un pequeño margen entre el buscador y el botón */
     background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
     color: #000; /* Texto negro */
     border: none;
@@ -164,7 +102,7 @@
     transition: background-color 0.3s ease;
   }
   
-  .btn-suscripcion:hover {
+  .btn:hover {
     background-color: rgba(255, 255, 255, 1); /* Fondo blanco sólido al pasar el mouse */
   }
   
@@ -172,8 +110,8 @@
     padding: 0px;
   }
   
-  /* Hero Section */
-  .hero-section {
+   /* Hero Section */
+   .hero-section {
     position: relative;
     display: flex;
     align-items: center;
@@ -204,47 +142,20 @@
     margin-bottom: 1.5rem;
   }
   
-  .botones-trending {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Espacio entre los botones */
-  }
-
   .hero-contenido .btn-ver-mas {
     background-color: #ffffff;
     color: #000000;
-    opacity: 1;
-    font-weight: 500;
-    padding: 10px 20px; /* Ajusta el tamaño del botón */
-    border-radius: 5px; /* Bordes redondeados */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave */
-    transform-origin: center; /* Escala desde el centro */
+    transform: translateY(-50%) scale(1.2);
+    opacity: 0.8;
   }
   
   .hero-contenido .btn-ver-mas:hover {
-    transform: scale(1.2); /* Agranda el botón un 20% */
+    transform: translateY(-50%) scale(1.2); /* Agranda el botón un 20% */
+    opacity: 1; /* Aumenta la opacidad al pasar el ratón */
   }
-
-  .hero-contenido .btn-play {
-    background-color: #ffffff;
-    color: #000000;
-    border: none;
-    border-radius: 50%;
-    width: 50px; /* Ancho del botón */
-    height: 50px;
-    justify-content: center; 
-    font-size: 16px;
-    cursor: pointer;
-    opacity: 1;
-  }
-
-  .hero-contenido .btn-play:hover {
-    opacity: 1; /* Aumenta la opacidad */
-    transform: scale(1.2); /* Agranda el botón un 20% */
-}
   
   #hero-imagen {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -297,9 +208,9 @@
     justify-content: center;
     align-items: center;
     gap: 19px; /* Aumenta el espacio entre los indicadores */
-    position: absolute;
-    bottom: 9%; /* Sube los indicadores ligeramente */
-    left: 50%;
+    position: relative;
+    bottom: -42%; /* Sube los indicadores ligeramente */
+    left: -45.2%;
     z-index: 3;
   }
   
@@ -319,6 +230,8 @@
   
   #scroll-btn-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     width: 100%;
     z-index: 3;
@@ -330,13 +243,17 @@
     width: 100px; /*Añadido*/
     height: 100px;/*Añadido*/
     border: none;
-    border-radius: 50%;
+    border-radius: 50px;
     cursor: pointer;
     position: fixed;
     bottom: -100px;
     left: 50%;
     transform: translateY(-50%);
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
     font-weight: bold;
     transition: transform 0.3s ease;
     opacity: 0.8;
@@ -393,14 +310,100 @@
   background: transparent; /* Invisible */
 }
   
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-contenido {
+    display: flex; /* Diseño de flexbox */
+    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+    justify-content: space-between; /* Espacia el póster y el contenido */
+    background-color: transparent; /* Fondo oscuro para el contenido */
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    width: 80%;
+    max-width: 900px; /* Limita el ancho máximo */
+    position: relative;
+    color: #fff; /* Texto blanco */
+  }
+  
   #modal-cartel {
-    max-width: 40%; /* El póster ocupa el 40% del ancho */
+    max-width: 60%; /* El póster ocupa el 40% del ancho */
     height: auto;
     border-radius: 10px; /* Bordes redondeados para el póster */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para destacar el póster */
   }
   
- 
+  .modal-texto {
+    max-width: 55%; /* El texto ocupa el 55% del ancho */
+    margin-left: 20px; /* Espaciado entre el póster y el texto */
+  }
+  
+  .modal-texto h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .modal-texto p {
+    margin: 10px 0;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  
+  .btn-ver-trailer {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .btn-ver-trailer:hover {
+    background-color: #b20710;
+  }
+  
+  .cerrar-modal {
+    width: 40px; /* Tamaño del botón */
+    height: 40px; /* Tamaño del botón */
+    background-color: rgba(255, 255, 255, 0.8); /* Blanco con transparencia */
+    color: #000; /* Color de la "X" */
+    border: none; /* Sin bordes */
+    border-radius: 50%; /* Forma redonda */
+    display: flex; /* Centrar la "X" */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    font-size: 1.5rem; /* Tamaño de la "X" */
+    font-weight: bold; /* Negrita para la "X" */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    transition: background-color 0.3s ease; /* Transición suave */
+    position: absolute; /* Posición fija dentro del modal */
+    top: 10px; /* Ajustar posición superior */
+    right: 10px; /* Ajustar posición derecha */
+    z-index: 10; /* Asegurar que esté por encima del contenido */
+}
+  
+  #modal-titulo {
+    margin-top: 0;
+  }
+  
+  
+  #modal-descripcion {
+    margin-top: 20px;
+  }
   
   .modal-abierto .hero-contenido {
     visibility: hidden; /* Oculta el contenido de la hero section */
@@ -480,5 +483,45 @@
   color: #ccc;
 }
 
+.btn-volver {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position:static;
+}
 
-/* Modal para la suscripción */
+.btn-volver:hover {
+  background-color: #e64a19;
+}
+
+.carrusel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.lista-peliculas {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.pelicula {
+  flex: 0 0 auto;
+  width: 150px;
+  text-align: center;
+}
+
+.pelicula img {
+  width: 100%;
+  border-radius: 5px;
+}
+

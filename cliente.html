@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cartelera - Zona de Cliente</title>
+  <link rel="stylesheet" href="cliente.css">
+  <link rel="stylesheet" href="categoria.css">
+</head>
+
+<body>
+  <header>
+    <img src="/img/logo.webp" alt="Nalion Streaming">
+    <div class="header-right">
+      <button id="btn-logout" class="btn">Cerrar Sesión</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero Section -->
+    <div id="hero" class="hero-section">
+      <button id="btn-prev" class="btn-lateral">❮</button>
+      <div class="hero-contenido">
+        <h1 id="hero-titulo">Título de la Película</h1>
+        <p id="hero-descripcion">Descripción breve de la película destacada.</p>
+        <button id="hero-boton" class="btn-ver-mas">Ver más</button>
+      </div>
+      <img id="hero-imagen" src="" alt="Imagen de la película destacada">
+      <button id="btn-next" class="btn-lateral">❯</button>
+    </div>
+
+   <!-- Continuar Viendo -->
+<section id="continuar-viendo">
+  <h2>Continuar Viendo</h2>
+  <div class="carrusel">
+    <button class="btn-carrusel btn-prev">❮</button>
+    <div id="lista-continuar-viendo" class="lista-peliculas"></div>
+    <button class="btn-carrusel btn-next">❯</button>
+  </div>
+</section>
+
+<!-- Recomendaciones -->
+<section id="recomendaciones">
+  <h2>Recomendaciones</h2>
+  <div class="carrusel">
+    <button class="btn-carrusel btn-prev">❮</button>
+    <div id="lista-recomendaciones" class="lista-peliculas"></div>
+    <button class="btn-carrusel btn-next">❯</button>
+  </div>
+</section>
+
+    <!-- Secciones del index -->
+    <section id="categorias-container" class="categorias"></section>
+  </main>
+
+  <script src="cliente.js" defer></script>
+</body>
+
+</html>

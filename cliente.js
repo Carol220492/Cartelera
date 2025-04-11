@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   let indiceActual = 0;
 
   try {
+    // Ocultar el mensaje de error al principio
+    const errorMensaje = document.getElementById('error-mensaje');
+    if (errorMensaje) {
+      errorMensaje.style.display = 'none';
+    }
+
     // Llamada a la API para obtener las películas populares (Hero Section)
     const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=es-ES&page=1`);
     const data = await response.json();
@@ -49,7 +55,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     configurarCarrusel(listaRecomendaciones, recomendacionesData.results);
   } catch (error) {
     console.error('Error al obtener los datos de la API:', error);
-    alert('Hubo un problema al cargar los datos. Por favor, inténtalo de nuevo más tarde.');
+
+    // Mostrar el mensaje de error si ocurre un problema
+    const errorMensaje = document.getElementById('error-mensaje');
+    if (errorMensaje) {
+      errorMensaje.style.display = 'block';
+      errorMensaje.textContent = 'Hubo un problema al cargar los datos. Por favor, inténtalo de nuevo más tarde.';
+    }
   }
 
   // Función para mostrar una película en la Hero Section

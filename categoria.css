@@ -182,6 +182,7 @@ h2 {
   font-size: 1em;
   cursor: pointer;
   transition: transform 0.2s ease;
+  z-index: 3;
 }
 
 .btn-play:hover,

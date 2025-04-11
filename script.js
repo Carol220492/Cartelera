@@ -1,3 +1,8 @@
+document.querySelector('.btn-play').addEventListener('click', () => {
+  console.log("CLICK FUNCIONA"); // Si no ves esto, el problema es que el evento no está bien atado
+});
+
+
 // Mostrar el formulario de búsqueda al hacer clic en la lupa
 document.getElementById("lupa").addEventListener("click", function () {
   const formBuscador = document.getElementById("form-buscador");
@@ -65,6 +70,7 @@ function cargarHero() {
   heroBoton.onclick = () => {
     mostrarDetallesPelicula(pelicula);
   };
+  
 
   actualizarIndicadores(); // Actualiza los indicadores al cargar una película
 }

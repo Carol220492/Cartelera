@@ -511,9 +511,7 @@ body {
 .lista-peliculas {
   display: flex;
   gap: 10px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 10px 0;
+  transition: transform 0.3s ease-in-out;
 }
 
 .pelicula {
@@ -527,23 +525,3 @@ body {
   border-radius: 5px;
 }
 
-.btn-carrusel {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-
-.btn-prev {
-  left: 0;
-}
-
-.btn-next {
-  right: 0;
-}

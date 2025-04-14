@@ -415,38 +415,46 @@
   #modal-busqueda {
     display: none; /* Oculto por defecto */
     position: fixed;
-    z-index: 1000;
     left: 0;
-    top: 0;
-    width: 70%;
-    height: 80%;
+    top: 92px;
+    width: 100%;
+    height: 100%;
     overflow: hidden; /* Evita que el contenido se desborde fuera del modal */
     background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
   }
   
   #modal-busqueda .modal-contenido {
+    display: flex;
+    flex-direction: column;
     background-color: #141414; /* Fondo oscuro */
-    margin: 5% auto;
     padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 900px;
-    max-height: 90%; /* Limita la altura máxima del modal */
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
     overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido es demasiado grande */
     color: #fff;
     position: relative;
+    box-sizing: border-box;
   }
   
   #modal-busqueda h2 {
-    margin-top: 0;
-    text-align: center;
+    margin-left: 50px;
+    margin-top: 70px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    white-space: nowrap;
+    font-size: 1.5rem;
+    padding: 20px; /* Padding horizontal para que no toque los bordes */
+    box-sizing: border-box;
+    
   }
   
   #modal-busqueda .cerrar-modal {
-    color: #fff;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    color: #000000;
+    position: fixed;
+    top: 170px;
+    right: 70px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -456,13 +464,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin-top: 20px;
+  margin: 50px;
+  z-index: 1001;
 }
 
 .resultado-item {
   width: 200px;
   text-align: center;
   color: #fff;
+  margin-left: 20px;
 }
 
 .resultado-item img {
@@ -572,32 +582,38 @@
 
 .modal-contenido {
   display: flex;
-  justify-content: flex-end; /* Coloca la información al lado derecho */
   align-items: flex-start;  /* Coloca la información en la parte superior */
   padding: 20px;
-  position: relative; /* Para que el contenido quede encima de .fondo-imagen */
-  z-index: 1;  /* Asegura que el contenido del modal esté por encima del fondo */
-  color: white; /* Establece el color blanco para el texto */
+  max-width: 2300px; /* Limita el ancho máximo del modal */
+  margin: 0 auto; /* Centra el modal horizontalmente */
 }
 
 #modal-cartel {
-  width: 30%;  /* Ajusta el ancho al 50% del contenedor */
+  display: flex;
+  width: 25%; 
   height: auto;  /* La altura se ajustará en función del ancho para mantener la proporción */
   aspect-ratio: 1 / 1.5;  /* Mantiene una relación de aspecto de un cuadrado alargado hacia abajo (1:1.5) */
   object-fit: cover;  /* Asegura que la imagen se mantenga dentro de los límites */
   border-radius: 10px;
+  margin-top: 5vw;
+  margin-left: 10vw;
 }
 
 
 .modal-texto {
   flex: 1; /* El texto ocupa el resto del espacio */
   color: white; /* Texto en color blanco */
-  margin-left: 20px; /* Espacio entre la imagen y el texto */
+  margin-left: 30px; /* Espacio entre la imagen y el texto */
+  margin-top: 5vw;
+  padding-right: 20px;
+  max-width: 50%;
 }
 
 #modal-titulo {
-  font-size: 24px;
+  font-size: 50px;
   font-weight: bold;
+  margin-left: 0; 
+  padding-left: 0;
 }
 
 #modal-descripcion,
@@ -612,10 +628,10 @@
 /* Estilo del botón de cierre (X) */
 .cerrar-modal {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: black;
-  color: white;
+  top: 70px;
+  right: 70px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -626,33 +642,39 @@
   align-items: center;
   cursor: pointer;
   z-index: 2000;
+  opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
 .cerrar-modal:hover {
-  background-color: #333;
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 /* Estilo del botón de Play (▶) */
 #modal-trailer {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: black;
-  color: white;
+  bottom: 70px;
+  right: 70px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   z-index: 2000;
+  opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
 #modal-trailer:hover {
-  background-color: #333;
+opacity: 1;
+transform: scale(1.2);
 }
 
 /* Estilo para el botón "Volver al buscador" */

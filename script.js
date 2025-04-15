@@ -342,3 +342,60 @@ scrollUpBtn.addEventListener("click", function () {
   window.scrollTo({ top: 0, behavior: "smooth" }); // Desplazamiento suave hacia la parte superior
 });
 
+// Habilitar desplazamiento horizontal en el carrusel
+document.addEventListener('DOMContentLoaded', () => {
+  const carruseles = document.querySelectorAll('.lista-peliculas'); // Selecciona todos los carruseles
+
+  carruseles.forEach((carrusel) => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Evento al presionar el mouse o tocar la pantalla
+    carrusel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carrusel.classList.add('active');
+      startX = e.pageX - carrusel.offsetLeft;
+      scrollLeft = carrusel.scrollLeft;
+    });
+
+    carrusel.addEventListener('touchstart', (e) => {
+      isDown = true;
+      carrusel.classList.add('active');
+      startX = e.touches[0].pageX - carrusel.offsetLeft;
+      scrollLeft = carrusel.scrollLeft;
+    });
+
+    // Evento al mover el mouse o deslizar el dedo
+    carrusel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carrusel.offsetLeft;
+      const walk = (x - startX) * 2; // Ajusta la velocidad del desplazamiento
+      carrusel.scrollLeft = scrollLeft - walk;
+    });
+
+    carrusel.addEventListener('touchmove', (e) => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX - carrusel.offsetLeft;
+      const walk = (x - startX) * 2; // Ajusta la velocidad del desplazamiento
+      carrusel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Evento al soltar el mouse o dejar de tocar la pantalla
+    carrusel.addEventListener('mouseup', () => {
+      isDown = false;
+      carrusel.classList.remove('active');
+    });
+
+    carrusel.addEventListener('mouseleave', () => {
+      isDown = false;
+      carrusel.classList.remove('active');
+    });
+
+    carrusel.addEventListener('touchend', () => {
+      isDown = false;
+      carrusel.classList.remove('active');
+    });
+  });
+});

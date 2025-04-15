@@ -121,3 +121,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = 'index.html'; // Redirigir al inicio
   });
 });
+

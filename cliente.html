@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Cartelera - Zona de Cliente</title>
-  <link rel="stylesheet" href="cliente.css">
   <link rel="stylesheet" href="categoria.css">
+  <link rel="stylesheet" href="cliente.css">
 </head>
 
 <body>
@@ -24,7 +24,10 @@
       <div class="hero-contenido">
         <h1 id="hero-titulo">Título de la Película</h1>
         <p id="hero-descripcion">Descripción breve de la película destacada.</p>
-        <button id="hero-boton" class="btn-ver-mas">Ver más</button>
+        <div class="botones-trending">
+          <button id="hero-boton" class="btn-ver-mas">INFO +</button>
+          <button class="btn-play">▶</button>
+          </div>
       </div>
       <img id="hero-imagen" src="" alt="Imagen de la película destacada">
       <button id="btn-next" class="btn-lateral">❯</button>
@@ -51,10 +54,31 @@
 </section>
 
     <!-- Secciones del index -->
-    <section id="categorias-container" class="categorias"></section>
+    <section class="categorias" id="categorias-container">
+    </section>
+
+    <div id="modal-pelicula" class="modal">
+      <div class="fondo-imagen"></div> 
+      <div class="modal-contenido">
+        <img id="modal-cartel" src="" alt="Cartel de la película">
+        <div class="modal-texto">
+          <h2 id="modal-titulo">Título de la Película</h2>
+          <p id="modal-descripcion">Descripción de la película.</p>
+          <p><strong>Año de estreno:</strong> <span id="modal-ano"></span></p>
+          <p><strong>Lenguajes disponibles:</strong> <span id="modal-lenguajes"></span></p>
+          <p><strong>Reparto:</strong> <span id="modal-reparto"></span></p>
+          <p><strong>Director:</strong> <span id="modal-director"></span></p>
+          <p id="volver-buscador" clas="modal-subtitulos"><strong>Subtítulos:</strong> <span id="modal-subtitulos"></span></p>
+          <button id="modal-trailer"  class="btn-ver-trailer">▶</button>
+        </div>
+        <button class="cerrar-modal">&times;</button>
+      </div>
+    </div>
   </main>
 
+  <script src="script.js" defer></script>
   <script src="cliente.js" defer></script>
+  <script src="categoria.js" defer></script>
 </body>
 
 </html>

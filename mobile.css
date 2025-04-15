@@ -97,7 +97,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     font-family: sans-serif;
     background-color: #141414;
     color: #fff;

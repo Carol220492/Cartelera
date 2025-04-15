@@ -1,0 +1,170 @@
+.botones-trending {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre los botones */
+  }
+
+  .hero-contenido .btn-ver-mas {
+    background-color: #ffffff;
+    color: #000000;
+    opacity: 1;
+    font-weight: 500;
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave */
+    transform-origin: center; /* Escala desde el centro */
+  }
+  
+  .hero-contenido .btn-ver-mas:hover {
+    transform: scale(1.2); /* Agranda el botón un 20% */
+  }
+
+  .hero-contenido .btn-play {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 50%;
+    width: 50px; /* Ancho del botón */
+    height: 50px;
+    justify-content: center; 
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  .hero-contenido .btn-play:hover {
+    opacity: 1; /* Aumenta la opacidad */
+    transform: scale(1.2); /* Agranda el botón un 20% */
+}
+
+.btn-lateral {
+    background-color: #ffffff;
+    color: #000000;
+    width: 50px; /*Añadido*/
+    height: 50px;/*Añadido*/
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+  }
+  
+  .btn-lateral:hover {
+    transform: translateY(-50%) scale(1.2); /* Agranda el botón un 20% */
+    opacity: 1; /* Aumenta la opacidad al pasar el ratón */
+  }
+  
+  #btn-prev {
+    left: 0px; /* Botón izquierdo */
+    border-top-right-radius: 50px; /* Redondea la esquina superior izquierda */
+    border-bottom-right-radius: 50px; /* Redondea la esquina inferior izquierda */
+  }
+  
+  #btn-next {
+    right: 0px; /* Botón derecho */
+    border-top-left-radius: 50px; /* Redondea la esquina superior izquierda */
+    border-bottom-left-radius: 50px; /* Redondea la esquina inferior izquierda */
+  }
+  
+  .indicadores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 19px; /* Aumenta el espacio entre los indicadores */
+    position: absolute;
+    bottom: 9%; /* Sube los indicadores ligeramente */
+    left: 50%;
+    z-index: 3;
+  }
+  
+  .indicador {
+    width: 16px; /* Aumenta el tamaño de los indicadores */
+    height: 16px; /* Aumenta el tamaño de los indicadores */
+    background-color: #ccc;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .indicador.activo {
+    background-color: #ffffff;
+    transform: scale(1.2); /* Agranda el indicador activo ligeramente */
+  }
+  
+  #scroll-btn-container {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+  }
+  
+  #scroll-btn {
+    background-color: #ffffff;
+    color: #000000;
+    width: 100px; /*Añadido*/
+    height: 100px;/*Añadido*/
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+  }
+  
+  #scroll-btn:hover {
+    transform: translateY(-50%) scale(1.2); /* Agranda el botón un 20% */
+   opacity: 1;
+  }
+  
+  #scroll-btn::before {
+    content: '⌄'; /* Flecha hacia abajo */
+    font-size: 80px;
+    line-height: 0;
+    position: absolute;
+    top: 10%; /* Posiciona la flecha en la mitad superior del círculo */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta el centrado horizontal */
+  }
+
+  #scroll-up-btn {
+    background-color: #ffffff;
+    color: #000000;
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: fixed;
+    bottom: -50px; /* Pegado al borde inferior */
+    left: 50%;
+    transform: translateX(-50%); /* Centra horizontalmente */
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-top: 10px; /* Ajusta el espacio superior */
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+}
+
+#scroll-up-btn:hover {
+    transform: scale(1.2); /* Agranda el botón un 20% */
+    transform: translateX(-50%) scale(1.2); 
+    opacity: 1;
+}

@@ -1,0 +1,143 @@
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    display: none; /* Inicialmente oculto */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .fondo-imagen {
+    position: absolute;  /* Asegura que la imagen se superponga al contenido */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;  /* Hace que la imagen cubra todo el contenedor */
+    background-position: center;  /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat;  /* Evita que la imagen se repita */
+    z-index: -1;  /* Asegura que la imagen quede detrás del contenido del modal */
+    filter: brightness(50%);  /* Añade un overlay oscuro sobre la imagen */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.589); /* Overlay oscuro */
+    z-index: 0;  /* Se coloca por encima de la imagen, pero por debajo del contenido */
+  }
+  
+  .modal-contenido {
+    display: flex;
+    align-items: flex-start;  /* Coloca la información en la parte superior */
+    padding: 20px;
+    max-width: 2300px; /* Limita el ancho máximo del modal */
+    margin: 0 auto; /* Centra el modal horizontalmente */
+  }
+  
+  #modal-cartel {
+    display: flex;
+    width: 25%; 
+    height: auto;  /* La altura se ajustará en función del ancho para mantener la proporción */
+    aspect-ratio: 1 / 1.5;  /* Mantiene una relación de aspecto de un cuadrado alargado hacia abajo (1:1.5) */
+    object-fit: cover;  /* Asegura que la imagen se mantenga dentro de los límites */
+    border-radius: 10px;
+    margin-top: 5vw;
+    margin-left: 10vw;
+  }
+  
+  
+  .modal-texto {
+    flex: 1; /* El texto ocupa el resto del espacio */
+    color: white; /* Texto en color blanco */
+    margin-left: 30px; /* Espacio entre la imagen y el texto */
+    margin-top: 5vw;
+    padding-right: 20px;
+    max-width: 50%;
+  }
+  
+  #modal-titulo {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 0; 
+    padding-left: 0;
+  }
+  
+  #modal-descripcion,
+  #modal-ano,
+  #modal-lenguajes,
+  #modal-reparto,
+  #modal-director,
+  #volver-buscador {
+    font-size: 16px;
+  }
+  
+  /* Estilo del botón de cierre (X) */
+  .cerrar-modal {
+    position: absolute;
+    top: 70px;
+    right: 70px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2000;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+  
+  .cerrar-modal:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  
+  /* Estilo del botón de Play (▶) */
+  #modal-trailer {
+    position: absolute;
+    bottom: 70px;
+    right: 70px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2000;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+  
+  #modal-trailer:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  }
+  
+  /* Estilo para el botón "Volver al buscador" */
+  #volver-buscador {
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  

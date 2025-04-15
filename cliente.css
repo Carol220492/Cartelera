@@ -500,28 +500,85 @@ body {
   background-color: #e64a19;
 }
 
+/* Estilo general para las secciones */
 .carrusel {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px; /* Aumenta el espacio entre los elementos */
   overflow: hidden;
   position: relative;
+  margin-top: 20px;
 }
 
 .lista-peliculas {
   display: flex;
-  gap: 10px;
-  transition: transform 0.3s ease-in-out;
+  gap: 20px; /* Aumenta el espacio entre los posters */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
 }
 
-.pelicula {
-  flex: 0 0 auto;
-  width: 150px;
-  text-align: center;
+.peliculas-carrusel {
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  padding: 0 2rem;
+  gap: 1rem;
+  box-shadow: #000000;
 }
 
 .pelicula img {
   width: 100%;
-  border-radius: 5px;
+  height: auto; /* Ajusta la altura del poster */
+  object-fit: cover; /* Asegura que la imagen se recorte correctamente */
+  border-radius: 15px; /* Bordes redondeados */
+  transition: transform 0.3s ease;
+}
+
+.pelicula img:hover {
+  transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+.pelicula p {
+  margin-top: 10px; /* Espaciado entre el poster y el título */
+  font-size: 1rem; /* Aumenta el tamaño del texto */
+  color: #fff; /* Asegura que el texto sea visible en fondos oscuros */
+}
+
+/* Botones laterales del carrusel */
+.btn-carrusel {
+  background-color: #ffffff;
+  color: #000000;
+  width: 50px; /*Añadido*/
+  height: 50px;/*Añadido*/
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.btn-prev {
+  left: 0px;
+  border-top-right-radius: 50px; /* Redondea la esquina superior izquierda */
+  border-bottom-right-radius: 50px; /* Redondea la esquina inferior izquierda */
+}
+
+.btn-next {
+  right: 0px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.btn-carrusel:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
